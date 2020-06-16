@@ -1,0 +1,7 @@
+check50:
+  checks: __init__.py
+  files:
+    - !exclude "*"
+    - !require "adventure.py"
+    - !require "room.py"
+    - !require "item.py"
