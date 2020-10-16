@@ -126,16 +126,16 @@ Take a look at `adventure.py`. The file has three main components.
 1. The `import` statement. Instead of working from a single file, we've split our two classes into separate files, in order to keep our files relatively short and tidy. To be able to access the Room class from the `adventure.py` file, we use `import`.
 
 2. The biggest part of the file is the `Adventure` class, which contain all methods that make the game work.
-
+	
 	- The `__init__` method ensures that all is set for playing an adventure game. In particular, it uses the other methods to load game data, build a structure of rooms, and point `current_room` to the first room in the map.
 
-	- The `parse_rooms` method opens and parses the data files, and the `load_rooms` method creates `Room` objects with that data. We'll explain more in step 1, below.
-
-	- The `game_over` method will eventually decide (calculate) if the game has been won or lost by the player.
+	- The `load_rooms` method opens and parses the data files, and creates `Room` objects with that data. We'll explain more in step 1, below.
 
 	- Moving around in the game is handled by the `move` method, by setting the "current" room to a different one.
 
-3. The `if __name__ == "__main__"` part, which contains the main "game loop" of the program. After introducing the game, it repeatedly asks for a command from the user, and tries to perform that command. In the `while` statement, you see that the game will stop as soon as the `game_over()` method returns `True`.
+	- The `get_description` method provides the description of the current room, the room the player is in.
+
+3. The `if __name__ == "__main__"` part, which contains the main "game loop" of the program. After introducing the game, it repeatedly asks for a command from the user, and tries to perform that command. 
 
 > A hard constraint in this program is that the `Adventure` class may not `print` anything. All other printing should be done in the `__main__` part. And in return, the `__main__` part may, aside from printing things, only call methods in the `Adventure` class. It may not access methods and/or attributes from the `Room class`. Each class will have separate responsibilities.
 
