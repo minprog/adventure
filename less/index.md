@@ -66,7 +66,7 @@ Implement an object-oriented version of Crowther's Adventure game using the clas
 	$ rm adventure.zip
 	$ cd adventure
 	$ ls
-	adventure.py  data/  room.py
+	adventure.py  data/
 
 
 ## Understanding
