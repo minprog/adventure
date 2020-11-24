@@ -61,7 +61,7 @@ Implement an object-oriented version of Crowther's Adventure game using the clas
 
 ### Distribution
 
-	$ wget https://github.com/minprog/adventure/raw/main/less/adventure.zip
+	$ wget https://github.com/minprog/adventure/raw/2020/less/adventure.zip
 	$ unzip adventure.zip
 	$ rm adventure.zip
 	$ cd adventure
@@ -375,7 +375,7 @@ Have a good look at the constraints we **noted earlier**:
 
 ### `check50`
 
-	check50 minprog/adventure/main/less
+	check50 -l minprog/adventure/2020/less
 
 
 ### `style50`
