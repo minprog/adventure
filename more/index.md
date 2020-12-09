@@ -331,7 +331,7 @@ If a player enters a room they've already seen, only give them the short descrip
 
 - Having done that, you can change `Adventure`'s `move` method to set a room to visited **right before moving to another room**. Use the new `set_visited` method to do that.
 
-- And finally, you can now use `is_visited` in `Adventure.get_description` to return either the room `name` or the room `description`, depending on whether it was visited before.
+- And finally, you can now use `is_visited()` in `Adventure.get_description` to return either the room `name` or the room `description`, depending on whether it was visited before.
 
 
 ## Step 4: Additional commands
