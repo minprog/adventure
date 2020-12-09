@@ -308,11 +308,11 @@ If a player enters a room they've already seen, only give them the short descrip
 
 - First, add a new attribute to `Room.__init__`: self.visited. It should be `False` when the room is first initialized.
 
-- Then, add a `set_visited()` method to `Room`, which marks it as visited. Also, add a `already_visited()` method, which returns False or True depending on the current state of the room.
+- Then, add a `set_visited()` method to `Room`, which marks it as visited. Also, add a `is_visited()` method, which returns False or True depending on the current state of the room.
 
 - Having done that, you can change `Adventure`'s `move` method to set a room to visited **right before moving to another room**. Use the new `set_visited` method to do that.
 
-- And finally, you can now use `get_visited` in `Adventure.get_description` to return either the room `name` or the room `description`, depending on whether it was visited before.
+- And finally, you can now use `is_visited()` in `Adventure.get_description` to return either the room `name` or the room `description`, depending on whether it was visited before.
 
 
 ## Step 4: Additional commands
