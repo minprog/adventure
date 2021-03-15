@@ -1,8 +1,9 @@
-## Adventure: moving around
+# Adventure: moving around
 
 Now that we have a couple of rooms, we can start implementing the game itself. We'll start by implementing a `move` method for the `Adventure` class. This methods defines an action in the game. Then, we'll write code for the game loop, where a player can actually enter commands, after which the game loop will call upon the methods of an `Adventure` object.
 
-### Implement `move`
+
+## Implement "move"
 
 The most basic function of this game is moving around between rooms. Remember that the `Adventure` class has a variable that keeps track of the "current room" for the game. It also has a still-empty `move` method that's supposed to set the current room to a new one.
 
@@ -11,7 +12,7 @@ The `move` method has one parameter, `direction`, which should let you lookup (v
 `move` should also return a boolean `True` or `False` depending on whether the move was possible. The main program can use this result to notify the user if the move could not be performed.
 
 
-### Prompting for commands
+## Prompting for commands
 
 Now check out `if __name__ == '__main__'` at the bottom of `adventure.py`. Currently, if you run `adventure.py`, you will be shown the description of the first room, you can even enter commands, but nothing will happen as you enter them.
 
@@ -38,8 +39,7 @@ We're going to support a few different commands, but first of all, let's allow y
 		>
 
 
-
-## Step 3: Short and long descriptions?
+## Short and long descriptions
 
 If a player enters a room they've already seen, only give them the short description. How should we keep track of that?
 
@@ -50,3 +50,8 @@ If a player enters a room they've already seen, only give them the short descrip
 - Having done that, you can change `Adventure`'s `move` method to set a room to visited **right before moving to another room**. Use the new `set_visited` method to do that.
 
 - And finally, you can now use `is_visited()` in `Adventure.get_description` to return either the room `name` or the room `description`, depending on whether it was visited before.
+
+
+## Testing
+
+Now that you have implemented moving around, you can test the game by playing (part of) it!

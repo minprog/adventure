@@ -4,7 +4,7 @@ Take another look at the data in `TinyAdv.dat`. **Parsing** is the task of loadi
 
 As it happens, the way the data is structured makes it easier to use it. We need to implement parsing in two **phases**: first create all rooms, then make all connections between the rooms (think about why this is essential!).
 
-### A small intermezzo on reading files
+## A small intermezzo on reading files
 
 You may have seen that it's possible to load information from a file using a `for`-loop:
 
@@ -30,7 +30,7 @@ When using `readline`, note that it can be used to distinguish between data line
 
 By making use of this particular behavior of `readline` we can parse section by section of our datafile.
 
-### Phase 1: creating rooms
+## Phase 1: creating rooms
 
 Now implement the first phase of `load_rooms` in `adventure.py`. Start with the file:
 
@@ -61,7 +61,7 @@ Finally, below that code, add a few assertions you know to be true:
 You can then run `adventure.py` and make sure none of the assertions fail. (You should later remove any assertions that depend on particular descriptions, because your program may be used using a different data file!)
 
 
-### Phase 2: making connections
+## Phase 2: making connections
 
 Because all rooms have now been created, we can read the connection data and make the actual connections between the rooms.
 
@@ -73,10 +73,12 @@ To actually connect rooms, you will have to look them up in `self.rooms` by numb
     destination_room = self.rooms[2]
     source_room.add_connection("WEST", destination_room)
 
+
+## Testing
+
 When finished, add a few assertions that should be true after making connections.
 
     assert self.rooms[1].has_connection("WEST")
     assert self.rooms[2].get_connection("EAST").name == "Outside building"
 
 You can again run `adventure.py` and make sure none of the assertions fail.
-

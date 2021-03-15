@@ -1,10 +1,13 @@
-# Adventure: implement the Room class
+# Adventure: the Room class
 
 The first step in building the game is creating a class that describes "Room" objects. The objects of this class will have two main responsibilities:
 
 1. Storing information about one room; in particular its short description and long description. These are stored in a few object variables.
 
 2. Storing information about the connections to other rooms, and the commands typed to go there. These should ideally be stored in a dictionary.
+
+
+## Implementation
 
 To store information about the room itself, implement a basic data class. Create a file called `room.py`, with a class called `Room`. The initializer should accept and store:
 
@@ -34,6 +37,9 @@ Now, implement the three methods for managing connections. You might need to rea
 
 > A hard constraint in this program is that the `Room` class may not access (use) other classes. Its methods may only manipulate `self` and any access only objects that are passed to it as arguments to method calls.
 
+
+## Testing
+
 After implementing, you should test the class by starting Python and creating `Room` objects:
 
 	$ python3 -i room.py
@@ -49,4 +55,4 @@ After implementing, you should test the class by starting Python and creating `R
 
 In that last line, you find the Python description of a `Room` object, along with its assigned memory address. Seems to work! (The address on your computer will most likely be different.)
 
-Be sure to test manually like above before continuing!
+Be sure to test manually, like above, before continuing!
