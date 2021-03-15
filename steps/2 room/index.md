@@ -25,7 +25,7 @@ This means that the dictionary maps a **direction** (string) to another `Room` o
 
 For example, if we load the **Tiny** game map, the result should be that we have 4 objects in memory, all pointing to each other:
 
-![](../tiny.png)
+![](../../tiny.png)
     
 Then you need to add three methods for managing and looking up connections:
 
