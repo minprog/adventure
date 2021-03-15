@@ -1,4 +1,4 @@
-## Adventure: objects
+# Adventure: objects
 
 Now that you are sure the game is playable using the Tiny and Small maps, let's implement the remaining feature needed to be able to play the Crowther map as well. As seen above, the data file contains descriptions for objects that are placed in the game (each in a default room) and then picked up, taken along, and dropped again by the player. The Crowther game is designed in a way that some routes can only be taken when the player is carrying certain objects.
 
@@ -53,7 +53,7 @@ And to test, don't forget to load the Crowther map:
     $ python adventure.py Crowther
 
 
-## Step 8: Conditional movement
+## Conditional movement
 
 Having objects in possession can allow your player to move to different rooms than without those objects, which opens up possibilities not seen before (like winning!). This is encoded in the Crowther data file. For example, room 9 has the following connections:
 
@@ -62,5 +62,3 @@ Having objects in possession can allow your player to move to different rooms th
 The east and west exit each connect, in normal conditions, to rooms 8 and 10, respectively. However, when holding a lamp, the behaviour of the "WEST" command is changed, moving the player into room 12.
 
 As you can see, you will need to change your code for reading the data files a bit. Then you'll also need to make changes to your `Room` class, the `Adventure` class and the main game loop!
-
-

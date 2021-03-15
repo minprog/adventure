@@ -72,3 +72,7 @@ If a player enters a room they've already seen, only give them the short descrip
 ## Testing
 
 Now that you have implemented moving around, you can test the game by playing (part of) it!
+
+Also, make sure your program still works if you transition from the **Tiny** map to the **Small** map. So try the game again, but like this:
+
+    $ python3 adventure.py Small

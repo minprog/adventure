@@ -1,8 +1,10 @@
 # Adventure: final touches
 
-## Step 4: Additional commands
+Let's finish the game by adding a few commands and a synonyms feature.
 
-As a final step for making the game work, we'll add a few commands that make it easier to use: `QUIT`, `HELP` and `LOOK`. Implement these in the following way:
+## Additional commands
+
+`HELP` and `LOOK` are two commands to make the game a bit easier to use. Implement those in the following way:
 
 -   `HELP` prints instructions to remind the player of their commands and how to use them. It should behave as follows:
 
@@ -20,14 +22,7 @@ As a final step for making the game work, we'll add a few commands that make it 
 
 For the latter, should implement a method `get_long_description` in `Adventure`, which will always return the long description.
 
-## Step 5: Try a larger map
 
-Before continuing, make sure your program still works if you transition from the **Tiny** map to the **Small** map! From now on, when testing, run the game like this:
-
-    $ python adventure.py Small
-
-
-## Step 7: Synonyms
+## Synonyms
 
 Implement Synonyms. Note that your adventure game does not implement all commands in the synonyms data file! Implement it in such a way that everything still works as expected, and do not accept commands like `I` or `INVENTORY`! In this case, it's advisable to not write a full class to manage synonyms, but use a standard dictionary instead.
-
