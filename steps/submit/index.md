@@ -1,4 +1,4 @@
-## Adventure: submit
+# Adventure: submit
 
 Take another look at the constraints we noted earlier:
 
@@ -9,12 +9,12 @@ Take another look at the constraints we noted earlier:
 - Remember that only a few things work with the Tiny map. You should normally test the game using the Crowther map. `check50` will certainly do so!
 
 
-### `check50`
+## check50
 
 	check50 -l minprog/adventure/2020/more
 
 
-### `style50`
+## style50
 
 	style50 adventure.py
 	style50 room.py
