@@ -11,7 +11,7 @@ Sometimes a player will attempt a movement that lands them in a bad place. For e
 
 The only way is going back the "Outside grate" room. In the description above you find a hint that the player is about to be moved automatically: "You head back to the depression." And indeed, this is what the forced movement feature is about to do.
 
-Whenever a room contains a connection labeled `FORCED`, and a player enters the room, they will be automatically be transferred to that connection. The game data files have been written to take advantage of this feature.
+Whenever a room contains a connection labeled `FORCED`, and a player enters the room, they will be **automatically** be transferred to that connection. The game data files have been written to take advantage of this feature.
 
 
 ## Specification

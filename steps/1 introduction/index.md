@@ -24,7 +24,7 @@ In Adventure you have to navigate between "Rooms" through commands such as "WEST
 
 That first part of the adventure "map" may look like this:
 
-![](map.png){:.w300}
+![](../map.png){:.w300}
 
 You can find the full map, including a spoiler-free version, [at this website](http://www.spitenet.com/cave/), but note that you will be implementing a portion of the full map!
 

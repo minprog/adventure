@@ -3,13 +3,30 @@
 Now that we have a couple of rooms, we can start implementing the game itself. We'll start by implementing a `move` method for the `Adventure` class. This methods defines an action in the game. Then, we'll write code for the game loop, where a player can actually enter commands, after which the game loop will call upon the methods of an `Adventure` object.
 
 
-## Implement "move"
+## Movement
 
-The most basic function of this game is moving around between rooms. Remember that the `Adventure` class has a variable that keeps track of the "current room" for the game. It also has a still-empty `move` method that's supposed to set the current room to a new one.
+The most elementary function of this game is moving around between rooms. The following steps allow a game to simulate movement:
 
-The `move` method has one parameter, `direction`, which should let you lookup (via the `current_room`) which room we're going to move on to. Just set `current_room` to that room and you're done.
+1. The current room has a description, which is printed to the screen to allow the player to understand where they are.
 
-`move` should also return a boolean `True` or `False` depending on whether the move was possible. The main program can use this result to notify the user if the move could not be performed.
+2. The player enters a direction they want to head into, such as "DOWN".
+
+3. The game changes the "current room" internally.
+
+4. The now-current room's description is printed, so the player feels that they have moved inside the game "world".
+
+5. Go to 2.
+
+Let's implement the `move()` method for the `Adventure` class, and then connect the game to that method.
+
+
+## The "move" method
+
+Remember that the `Adventure` class has a variable that keeps track of the "current room" for the game. It also has a `move` method that's supposed to set the current room to a new one.
+
+The `move` method has one parameter, `direction`. You can check the connections to find the room that you're going to move the player to. Then set `current_room` to that new room and you're done.
+
+As an implementation detail, `move` should also return a boolean `True` or `False` depending on whether the move was possible (when is the move not possible?). The main program can use this result to notify the user if the move could not be performed.
 
 
 ## Prompting for commands
