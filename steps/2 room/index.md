@@ -40,7 +40,7 @@ Now, implement the three methods for managing connections. You might need to rea
 
 ## Testing
 
-After implementing, you should test the class by starting Python and creating `Room` objects:
+After implementing the `Room` class, you should test the class by starting Python interactively (so you can enter commands) and creating a few `Room` objects:
 
 	$ python3 -i room.py
 	>>> r1 = Room(1, "Room 1", "Description 1")
@@ -55,4 +55,4 @@ After implementing, you should test the class by starting Python and creating `R
 
 In that last line, you find the Python description of a `Room` object, along with its assigned memory address. Seems to work! (The address on your computer will most likely be different.)
 
-Be sure to test manually, like above, before continuing!
+Be sure to test manually, like above, before continuing.

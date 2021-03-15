@@ -2,7 +2,7 @@
 
 Take another look at the data in `TinyAdv.dat`. **Parsing** is the task of loading this information into memory in a structured way. For this version of adventure, you are going to read the room information (the first section of the file) as well as the connections information (the second section of the file). We'll leave the third section, with game objects, for another time.
 
-As it happens, the way the data is structured makes it easier to use it. We need to implement parsing in two **phases**: first create all rooms, then make all connections between the rooms (think about why this is essential!).
+As it happens, the way the data is structured makes it easier to use it. We need to implement parsing in two **phases**: first create all rooms, then make all connections between the rooms. This is because any two rooms may be connected, and they have to exist as objects in memory before setting a connection.
 
 ## A small intermezzo on reading files
 
@@ -72,6 +72,17 @@ To actually connect rooms, you will have to look them up in `self.rooms` by numb
     source_room = self.rooms[1]
     destination_room = self.rooms[2]
     source_room.add_connection("WEST", destination_room)
+
+
+## Objects in memory
+
+So we have rooms and connections. What can we find in memory now that everything has been loaded? How can we get to each of the objects in the room graph?
+
+1. The attribute `current_room` of `Adventure` points to a single object of the `Room` class, which should be the first room when the game is first loaded.
+
+2. The attribute `_rooms` of `Adventure` is a dictionary, which maps each room number to a single object of the `Room` class. This way you have access to **all** rooms directly, but you will not actually need this after loading everything.
+
+3. Once you have a `Room` object, you can reach any connected rooms through the `get_connection()` method. Hence, you should be able to reach any room from the first one---that is, if the data files are correct!
 
 
 ## Testing
