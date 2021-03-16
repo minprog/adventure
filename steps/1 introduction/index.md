@@ -48,19 +48,20 @@ Though Crowther originally wrote his game in Fortran, an imperative programming 
 Implement an object-oriented version of Crowther's Adventure game using the class structure provided below. It should have the following parts:
 
 1. implement **loading** of the map:
-	* handling command line arguments to open a given datafile
-	* loading map data into a series of objects
+    * handling command line arguments to open a given datafile
+    * loading map data into a series of objects
 2. implement user **interaction**:
-	* prompting the user for commands and execute those
-	* warn about non-existent commands
-	* moving the player from room to room
+    * prompting the user for commands and execute those
+    * warn about non-existent commands
+    * moving the player from room to room
 3. implement game **logic**:
-	* forced movements
+    * forced movements
+    * managing items and inventory
 
 
 ### Distribution
 
-	$ wget https://github.com/minprog/adventure/raw/2020/less/adventure.zip
+	$ wget https://github.com/minprog/adventure/raw/2020/steps/adventure.zip
 	$ unzip adventure.zip
 	$ rm adventure.zip
 	$ cd adventure
@@ -96,26 +97,21 @@ The second part describes connections between rooms. In fact, this section defin
 
 The third and final part describes objects that may be found in the game. You will not use these in the "standard edition" of this problem.
 
-Also included in your distribution is `SmallAdv.dat`, which is a bit larger and includes more advanced interactions.
-
+Also included in your distribution is `SmallAdv.dat`, which is a bit larger and includes more advanced interactions, as well as `Crowther.dat`, which is the full game.
 
 
 ### `adventure.py`
 
-Take a look at `adventure.py`. The file has three main components.
+Take a look at `adventure.py`. The file has two parts.
 
-1. The `import` statement. Instead of working from a single file, we've split our two classes into separate files, in order to keep our files relatively short and tidy. To be able to access the Room class from the `adventure.py` file, we use `import`.
+1. The `Adventure` class contains all methods that make the game work:
 
-2. The biggest part of the file is the `Adventure` class, which contain all methods that make the game work.
+	- The `__init__` method ensures that all is set for playing an adventure game. In particular, it uses other methods to load game data and point `current_room` to the first room in the map.
 
-	- The `__init__` method ensures that all is set for playing an adventure game. In particular, it uses the other methods to load game data, build a structure of rooms, and point `current_room` to the first room in the map.
-
-	- The `load_rooms` method opens and parses the data files, and creates `Room` objects with that data. We'll explain more in step 1, below.
+	- The `room_description` method provides the description of the current room, the room the player is in.
 
 	- Moving around in the game is handled by the `move` method, by setting the "current" room to a different one.
 
-	- The `get_description` method provides the description of the current room, the room the player is in.
+2. The `if __name__ == "__main__"` part, which contains the main "game loop" of the program. After introducing the game, it repeatedly asks for a command from the user, and tries to perform that command.
 
-3. The `if __name__ == "__main__"` part, which contains the main "game loop" of the program. After introducing the game, it repeatedly asks for a command from the user, and tries to perform that command. 
-
-> A hard constraint in this program is that the `Adventure` class may not `print` anything. All other printing should be done in the `__main__` part. And in return, the `__main__` part may, aside from printing things, only call methods in the `Adventure` class. It may not access methods and/or attributes from the `Room class`. Each class will have separate responsibilities.
+> A hard constraint in this program is that the `Adventure` class may not `print` anything. All other printing should be done in the `__main__` part. And in return, the `__main__` part may, aside from printing things, only call methods in the `Adventure` class. It may not access methods and/or attributes from other classes that you will be writing. As such, each class will have separate responsibilities.

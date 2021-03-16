@@ -1,8 +1,21 @@
 # Adventure: reading data files
 
-Take another look at the data in `TinyAdv.dat`. **Parsing** is the task of loading this information into memory in a structured way. For this version of adventure, you are going to read the room information (the first section of the file) as well as the connections information (the second section of the file). We'll leave the third section, with game objects, for another time.
+Take another look at the data in `TinyAdv.dat`. **Parsing** is the task of loading this information into memory in a structured way. You are going to read the room information from the first section of the file, and the connections information from the second section of the file. We'll leave the third section, with game objects, for later.
 
-As it happens, the way the data is structured makes it easier to use it. We need to implement parsing in two **phases**: first create all rooms, then make all connections between the rooms. This is because any two rooms may be connected, and they have to exist as objects in memory before setting a connection.
+
+## Background
+
+You will need to implement parsing in two **phases**: first create all room objects, then make all connections between the rooms. This is because any two rooms may be connected, and they both have to exist as objects in memory before setting a connection. Best, then, to first create all objects and then make all connections.
+
+
+## Getting started
+
+- Create a file called `loader.py`, which will define a `load_rooms()` function.
+
+- The file needs access to the `Room` class (so it can create `Room`-type objects), so it needs to specify `from room import Room` right at the top.
+
+- Write a function `load_rooms()` that creates a graph of all room objects pointing to each other and returns a reference to the first room in the game.
+
 
 ## A small intermezzo on reading files
 
@@ -30,9 +43,10 @@ When using `readline`, note that it can be used to distinguish between data line
 
 By making use of this particular behavior of `readline` we can parse section by section of our datafile.
 
+
 ## Phase 1: creating rooms
 
-Now implement the first phase of `load_rooms` in `adventure.py`. Start with the file:
+Now implement the first phase of `load_rooms` in `adventure.py`. Start by opening the file:
 
     with open(filename) as f:
 
@@ -41,7 +55,7 @@ Then write a loop to read the room data:
 1. read a line
 2. `split()` it into a list, making sure you split on the TAB character ("\t")
 3. create a new room object using the data from the list
-4. add the room to `self.rooms` for later use, mapping the room ID to the room object itself
+4. add the room to a `rooms` variable for later use
 5. go to 1
 
 Make sure the loop ends as soon as `readline` returns *just* a newline character. Also, don't forget to clean the data. Each line has a newline character at the end, and this character should *not* end up in the room object description! Recall how to remove a stray newline from the end of a string?
@@ -55,8 +69,8 @@ Having done the above should lead to a fully initialized `self.rooms` dictionary
 
 Finally, below that code, add a few assertions you know to be true:
 
-    assert 1 in self.rooms
-    assert self.rooms[1].name == "Outside building"
+    assert 1 in rooms
+    assert rooms[1].name == "Outside building"
 
 You can then run `adventure.py` and make sure none of the assertions fail. (You should later remove any assertions that depend on particular descriptions, because your program may be used using a different data file!)
 
