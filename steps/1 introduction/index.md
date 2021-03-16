@@ -114,4 +114,6 @@ Take a look at `adventure.py`. The file has two parts.
 
 2. The `if __name__ == "__main__"` part, which contains the main "game loop" of the program. After introducing the game, it repeatedly asks for a command from the user, and tries to perform that command.
 
+Make sure that you understand every line of code in `adventure.py` before you start.
+
 > A hard constraint in this program is that the `Adventure` class may not `print` anything. All other printing should be done in the `__main__` part. And in return, the `__main__` part may, aside from printing things, only call methods in the `Adventure` class. It may not access methods and/or attributes from other classes that you will be writing. As such, each class will have separate responsibilities.

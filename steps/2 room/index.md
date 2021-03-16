@@ -9,19 +9,19 @@ The first step in building the game is creating a class that describes "Room" ob
 
 ## Implementation
 
-To store information about the room itself, implement a basic data class. Create a file called `room.py`, with a class called `Room`. The initializer should accept and store:
+To store information about the room itself, implement a class. Create a file called `room.py` to define a class called `Room`. Each room has two names, so the initializer should accept and store these two values:
 
-- room name (string)
-- room description (string)
+- a long description (string)
+- a short description (string)
 
-To store information about the connections, you will need to create a new empty dictionary in the initializer. After loading the game map, a connections dictionary inside a `Room` object might look like this:
+And to store information about the connections, you will need to create a new empty dictionary in the initializer. After loading the game data, a connections dictionary inside a `Room` object might look like this:
 
 	connections = {
 		"WEST": <room.Room object at 0x7f325cbc4d68>,
 		"EAST": <room.Room object at 0x7f325cbc4fd0>
 	}
 
-This means that the dictionary maps a **direction** (string) to another `Room` object. This is very important! The description above means that `Room` objects will point to each other, meaning that when the game map is loaded, a [**graph**](https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)) is created of rooms and connections. The goal of the game is to *navigate that graph*. A graph, incidentally, is one kind of Abstract Data Type!
+This means that the dictionary maps a **direction** (string) to another `Room` object. This is very important! This means that `Room` objects will point to each other, such that when the game map is loaded, a [**graph**](https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)) is created of rooms and connections. The goal of the game is to *navigate that graph*.
 
 For example, if we load the **Tiny** game map, the result should be that we have 4 objects in memory, all pointing to each other:
 
