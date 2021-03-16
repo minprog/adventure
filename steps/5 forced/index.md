@@ -18,17 +18,11 @@ Whenever a room contains a connection labeled `FORCED`, and a player enters the 
 
 If a player enters a room that has a direction named `FORCED`:
 
-- the long room description will be printed (always),
+- the long room description will be printed (even if already visited),
 - the player will be immediately moved back to the connected room,
-- the default description for the connected room will be printed.
+- the description for the connected room will be printed.
 
 
 ## Hints
 
-- You'll most likely want to do a check each time you move to a new room. If there's a `FORCED` connection in the new room, take a good look around and follow the forced route.
-
-- As you're going to have to print the description, handle this in the main game loop and not in the `move` method! To accomplish this, you have to add a new method to the `Adventure` class:
-
-    - `is_forced` will allow us to check if the current room has a forced connection
-
-    - note that you can use the existing `get_long_description`!
+Currently, the `Room` class decides whether to print the short or long description. Change it to account for the specification above.
