@@ -19,7 +19,7 @@ Because each room will point to other rooms, together they will form a [**graph*
 
 ![](../../tiny.png)
 
-Compare this to the graphical map that was shown in the introduction. What we're doing is to model the idea of the game into a network of objects. The structure of both is quite alike.
+Compare this to the hand-drawn map fragment that was shown in the introduction. What we're doing is to model the idea of the game into a network of objects. The structure of both is quite alike.
 
 
 ## Implementation
@@ -36,9 +36,9 @@ Compare this to the graphical map that was shown in the introduction. What we're
 
 - Write a method `add_connection()`, which accepts a direction (string) and a room (another Room object), and saves it in the connection storage.
 
-- Write a method `has_connection` that can determine if there is a connection available from the room to another room, given the direction.
+- Write a method `has_connection()` that can determine if there is a connection available from the room to another room, given the direction.
 
-- Write a method `get_connection` that retrieves the actual `Room` object that is found given a specific direction.
+- Write a method `get_connection()` that retrieves the actual `Room` object that is found given a specific direction.
 
 > A hard constraint in this program is that the `Room` class may not access (use) other classes. Its methods may only manipulate `self` and any access only objects that are passed to it as arguments to method calls.
 
