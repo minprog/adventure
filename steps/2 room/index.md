@@ -26,7 +26,9 @@ Compare this to the hand-drawn map fragment that was shown in the introduction. 
 
 - To store information about the room itself, implement a class. Create a file called `room.py` to define a class called `Room`.
 
-- Write an initializer. When created, a room is required to have two descriptions, so an intializer is needed to enforce that requirement. Also, a "new" room has not been visited before, so that's why you should also set a variable to represent that.
+- Write an initializer. When created, a room is required to have two descriptions, so an intializer is needed to enforce that requirement.
+
+- A "new" room has not been visited before, so that's why you should also set a variable in the initializer to represent that (such a variable is called a "flag").
 
 - Write a method `set_visited()` that allows us to mark the room as visited when that happens.
 
