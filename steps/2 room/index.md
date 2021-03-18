@@ -15,7 +15,7 @@ The first step in building the game is creating a class that describes "Room" ob
 
 ## A graph of rooms
 
-Because each room will point to other rooms, together they will form a [**graph**](https://en.wikipedia.org/wiki/Graph_(discrete_mathematics). The goal of the game is to navigate the rooms, and in our code, that means navigating a graph of room objects. For example, when we load the **Tiny** game map, the result is that we have four objects in memory, all pointing to each other:
+Because each room will point to other rooms, together they will form a [**graph**](https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)). The goal of the game is to navigate the rooms, and in our code, that means navigating a graph of room objects. For example, when we load the **Tiny** game map, the result is that we have four objects in memory, all pointing to each other:
 
 ![](../../tiny.png)
 
