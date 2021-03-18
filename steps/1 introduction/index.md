@@ -1,16 +1,16 @@
 # Adventure: introduction
 
-In this project, your goal is to implement Crowther's Adventure game using OOP in Python. Eventually, your project will be implemented in a number of separate files that each contain some part of the code. Practicing with the design of programs using OOP is the main goal of this project. For most parts, we offer strong guidelines on how to implement your code; but for other parts, figuring out how to fit new functionality is your responsibility.
+In this project, your goal is to implement **Crowther's Adventure game** using OOP in Python. Eventually, your project will be implemented in a number of separate files that each contain some part of the code. Practicing with the design of programs using OOP is the main goal of this project. For most parts, we offer strong guidelines on how to implement your code; but for other parts, figuring out how to fit new functionality is your responsibility.
 
 > All parts of this final assignment are to be done individually. Feel free to discuss programming strategies and overall design with other students, but refrain from diving into specifics about how to write code for particular parts of the program.
 
 ## Background
 
-Back in the days, before computer graphics on personal computers (PCs) were a thing, text-based adventure games were incredibly popular. This type of game consists entirely out of text, and is traversed by typing in commands, much like those one would enter in the terminal to navigate the file system.
+Back in the days, before computer graphics on personal computers (PCs) were a thing, text-based adventure games were incredibly popular. This type of game consists entirely out of text printed to the screen, and is traversed by typing in commands, much like those one would enter in the terminal to navigate the file system.
 
-One such game is Colossal Cave Adventure, created by [William Crowther](https://en.wikipedia.org/wiki/William_Crowther_(programmer)) in 1975. This game served as an inspiration for all of the text adventure game genre. The commands that a player enters in Adventure can be words like "IN" and "OUT", or maybe "WEST" and "EAST", each suggesting a **direction** that is taken to navigate the "virtual world".
+One such game is Colossal Cave Adventure, created by [William Crowther](https://en.wikipedia.org/wiki/William_Crowther_(programmer)) in 1975. This game served as an inspiration for all of the text adventure game genre. The commands that a player enters in Adventure can be words like "IN" and "OUT", or maybe "WEST" and "EAST", each suggesting a direction that is taken to navigate the "virtual world".
 
-Here is an example where the player is displayed a description of the current place in the virtual world, then they enter a command which leads to another place, and so on:
+Here is an example where the player is displayed a description of the current place in the virtual world, then they enter a command which leads to another place (or "room"), and so on:
 
     You are standing at the end of a road before a small brick
     building. A small stream flows out of the building and
@@ -23,14 +23,16 @@ Here is an example where the player is displayed a description of the current pl
     Outside building.
     >
 
-Together, all these places in the virtual world can be mapped out to get an idea of how everything is connected. The very first part of the adventure "map" may look like this:
+So, the essence of such a game is a loop that prints descriptions and allows user input. Together, all the places in the virtual world can be mapped out to get an idea of how everything is connected. The very first part of the adventure "map" may look like this:
 
 ![](../../map.png){:.w300}
 
 You can find a full map, including a spoiler-free version, [at this website](http://www.spitenet.com/cave/).
 
-And there is more than just navigating: at all times you can ask for `HELP` for an explanation of the game, or `LOOK` to get a detailed description of the room you are in.
-From the previous example you could see that the second time a room is entered a shorter description was shown. If we were to enter the `LOOK` command we would again see the following:
+The adventure "map" is provided in a few **data files**, that contain room names and description, and in particular, information about which rooms are connected to other rooms, and using which commands. None of this information is "hard coded" into the program!
+
+And there is more than just navigating: at all times a player can ask for `HELP` to get an explanation of the game, or `LOOK` to get a detailed description of the room they are in.
+If you've carefully studied the previous example, you could have seen that the second time a room is entered, a shorter description is shown. If we were to enter the `LOOK` command we would again see the following:
 
     > LOOK
     You are standing at the end of a road before a small brick
@@ -39,23 +41,21 @@ From the previous example you could see that the second time a room is entered a
     to the west.
     >
 
-The adventure "map" is provided in a few **data files**, that contain room names and description, and in particular, information about which rooms are connected to other rooms, and using which commands. None of this information is "hard coded" into the program!
-
-Though Crowther originally wrote his game in Fortran, an imperative programming language that has been around since the 1950s, we will be taking a more modern approach to its implementation, using object-oriented programming (OOP). OOP is particularly suited to Adventure, because its main idea is a series of rooms that are connected. Each room will be an object, and all of these objects will point to each other.
+Though William Crowther originally wrote his game in Fortran, an imperative programming language that has been around since the 1950s, we will be taking a more modern approach to its implementation, using object-oriented programming (OOP). OOP is particularly suited to Adventure, because we can model the whole game as a series of interconnected "room" objects.
 
 
 ## Specification
 
-Implement an object-oriented version of Crowther's Adventure game using the class structure provided below. It should have the following parts:
+Implement an object-oriented version of Crowther's Adventure game using the class structure provided in the assignment. The main features of the game are the following:
 
-1. implement **loading** of the map:
+1. **loading** of the map:
     * handling command line arguments to open a given datafile
     * loading map data into a series of objects
-2. implement user **interaction**:
+2. **user interaction**:
     * prompting the user for commands and execute those
     * warn about non-existent commands
     * moving the player from room to room
-3. implement game **logic**:
+3. **game logic**:
     * forced movements
     * managing items and inventory
 
@@ -88,7 +88,7 @@ The `data` directory contains data files with which you can create two versions 
     KEYS	a set of keys	3
     LAMP	a brightly shining brass lamp	2
 
-The file comprises three parts, divided by two blank lines. The first part describes the "rooms", with on each line an identifying number, then a TAB character, then a short description, then another TAB character, and then a long description:
+The file has three parts, divided by two blank lines. The first part describes the "rooms", with on each line an identifying number, then a TAB character, then a short description, then another TAB character, and then a long description:
 
     1	Outside building	You are standing at the end of ...
 
@@ -96,9 +96,10 @@ The second part describes connections between rooms. In fact, this section defin
 
     2	EAST	1	DOWN	1
 
-The third and final part describes objects that may be found in the game. You will not use these in the "standard edition" of this problem.
+The third and final part describes "objects" that may be found in the game. Each line contains a "command" that can be typed to manipulate the object, then a TAB, then a short description of the object, then a TAB and finally the number of the room that the object will initially be placed in.
 
-Also included in your distribution is `SmallAdv.dat`, which is a bit larger and includes more advanced interactions, as well as `Crowther.dat`, which is the full game.
+Also included in your distribution is `SmallAdv.dat`, which is a bit larger and includes more advanced interactions, as well as `CrowtherAdv.dat`, which is the complete original adventure game!
+
 
 ### Starter code
 
