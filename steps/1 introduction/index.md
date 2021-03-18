@@ -29,7 +29,7 @@ So, the essence of such a game is a loop that prints descriptions and allows use
 
 You can find a full map, including a spoiler-free version, [at this website](http://www.spitenet.com/cave/).
 
-The adventure "map" is provided in a few **data files**, that contain room names and description, and in particular, information about which rooms are connected to other rooms, and using which commands. None of this information is "hard coded" into the program!
+The adventure "map" is provided in a few **data files** that contain room names and description, and in particular, information about which rooms are connected to other rooms, and using which commands. None of this information is "hard coded" into the program!
 
 And there is more than just navigating: at all times a player can ask for `HELP` to get an explanation of the game, or `LOOK` to get a detailed description of the room they are in.
 If you've carefully studied the previous example, you could have seen that the second time a room is entered, a shorter description is shown. If we were to enter the `LOOK` command we would again see the following:
@@ -113,7 +113,7 @@ Take a look at `adventure.py`. The file has two parts.
 
 	- Moving around in the game is handled by the `move` method, by setting the "current" room to a different one.
 
-2. The `if __name__ == "__main__"` part, which contains the main "game loop" of the program. After introducing the game, it repeatedly asks for a command from the user, and tries to perform that command.
+2. The `if __name__ == "__main__"` part, which contains the main "game loop" of the program. After introducing the game, it repeatedly asks for a command from the user, and tries to perform that command. The actual handling of the commands is coded into the `Adventure` class, so the main responsibility of this part is to perform the game loop and translate commands into method calls to an `Adventure` object.
 
 Make sure that you understand every line of code in `adventure.py` before you start. Think about the methods that do not exist yet: what is their responsibility in making the game work?
 

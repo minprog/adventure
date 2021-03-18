@@ -1,58 +1,68 @@
 # Adventure: the Room class
 
-The first step in building the game is creating a class that describes "Room" objects. The objects of this class will have two main responsibilities:
+The first step in building the game is creating a class that describes "Room" objects. You're going to do that now in complete isolation of the code in the `adventure.py` starter. Objects of the `Room` class will have two main responsibilities:
 
-1. Storing information about one room; in particular its short description and long description. These are stored in a few object variables.
+1.  Storing information about the room itself:
 
-2. Storing information about the connections to other rooms, and the commands typed to go there. These should ideally be stored in a dictionary.
+    - a short description
+    - a long description
+    - whether the room has been visited before
+
+    Along with this information must come helper methods to manage the "visitedness" of the room and to provide the room description that must be printed depending on the state of the room.
+
+2.  Storing information about the connections to other rooms, along with methods to change and request such information.
+
+
+## A graph of rooms
+
+Because each room will point to other rooms, together they will form a [**graph**](https://en.wikipedia.org/wiki/Graph_(discrete_mathematics). The goal of the game is to navigate the rooms, and in our code, that means navigating a graph of room objects. For example, when we load the **Tiny** game map, the result is that we have four objects in memory, all pointing to each other:
+
+![](../../tiny.png)
+
+Compare this to the graphical map that was shown in the introduction. What we're doing is to model the idea of the game into a network of objects. The structure of both is quite alike.
 
 
 ## Implementation
 
-To store information about the room itself, implement a class. Create a file called `room.py` to define a class called `Room`. Each room has two names, so the initializer should accept and store these two values:
+- To store information about the room itself, implement a class. Create a file called `room.py` to define a class called `Room`.
 
-- a long description (string)
-- a short description (string)
+- Write an initializer. When created, a room is required to have two descriptions, so an intializer is needed to enforce that requirement. Also, a "new" room has not been visited before, so that's why you should also set a variable to represent that.
 
-And to store information about the connections, you will need to create a new empty dictionary in the initializer. After loading the game data, a connections dictionary inside a `Room` object might look like this:
+- Write a method `set_visited()` that allows us to mark the room as visited when that happens.
 
-	connections = {
-		"WEST": <room.Room object at 0x7f325cbc4d68>,
-		"EAST": <room.Room object at 0x7f325cbc4fd0>
-	}
+- Write a method `description()` that returns the short/long description depending on whether the room thas been visited before.
 
-This means that the dictionary maps a **direction** (string) to another `Room` object. This is very important! This means that `Room` objects will point to each other, such that when the game map is loaded, a [**graph**](https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)) is created of rooms and connections. The goal of the game is to *navigate that graph*.
+- Create a place to store connections. In each room, we need a mapping between, one the one hand, a string representing a direction such as `"WEST"`, and on the other hand, a reference to another room object. What Python data structure is best to store mappings? Create an empty variable in the initializer to prepare this.
 
-For example, if we load the **Tiny** game map, the result should be that we have 4 objects in memory, all pointing to each other:
+- Write a method `add_connection()`, which accepts a direction (string) and a room (another Room object), and saves it in the connection storage.
 
-![](../../tiny.png)
-    
-Then you need to add three methods for managing and looking up connections:
+- Write a method `has_connection` that can determine if there is a connection available from the room to another room, given the direction.
 
-- `add_connection` which accepts a direction (string) and a room (another Room object), and stores those in the dictionary
-- `has_connection` which accepts a direction (string), and checks whether there is a connection in the dictionary under that name
-- `get_connection` which accepts a direction (string), and retrieves the actual Room object that it connects to
-
-Now, implement the three methods for managing connections. You might need to read up on [dictionaries](https://docs.python.org/3/tutorial/datastructures.html#dictionaries).
+- Write a method `get_connection` that retrieves the actual `Room` object that is found given a specific direction.
 
 > A hard constraint in this program is that the `Room` class may not access (use) other classes. Its methods may only manipulate `self` and any access only objects that are passed to it as arguments to method calls.
 
 
 ## Testing
 
-After implementing the `Room` class, you should test the class by starting Python interactively (so you can enter commands) and creating a few `Room` objects:
+After implementing the `Room` class, you should test the class by starting Python interactively (so you can enter Python commands) and creating a few `Room` objects:
 
-	$ python3 -i room.py
-	>>> r1 = Room(1, "Room 1", "Description 1")
-	>>> r2 = Room(2, "Room 2", "Description 2")
-	>>> r2.add_connection("WEST", r1)
-	>>> r2.has_connection("EAST")
-	False
-	>>> r2.has_connection("WEST")
-	True
-	>>> r2.get_connection("WEST")
-	<__main__.Room object at 0x7f36f65076a0>
+    $ python3 -i room.py
+    >>> r1 = Room(1, "Room 1", "Long description 1")
+    >>> r2 = Room(2, "Room 2", "Long description 2")
+    >>> r2.add_connection("WEST", r1)
+    >>> r2.has_connection("EAST")
+    False
+    >>> r2.has_connection("WEST")
+    True
+    >>> r2.get_connection("WEST")
+    <__main__.Room object at 0x7f36f65076a0>
+    >>> r1.description()
+    "Long description 1"
+    >>> r1.set_visited()
+    >>> r1.description()
+    "Room 1"
 
-In that last line, you find the Python description of a `Room` object, along with its assigned memory address. Seems to work! (The address on your computer will most likely be different.)
+(The memory address shown on your computer will be different.)
 
 Be sure to test manually, like above, before continuing.
