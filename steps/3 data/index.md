@@ -86,7 +86,7 @@ To actually connect rooms, you will have to look them up in `self.rooms` by numb
     source_room.add_connection("WEST", destination_room)
 
 
-## Objects in memory
+## The result of loading: objects in memory
 
 So when all is done, we have rooms and their connections. What can we find in memory now that everything has been loaded? How can we get to each of the objects in the room graph?
 
