@@ -1,6 +1,6 @@
 # Adventure: introduction
 
-In this project, your goal will be to implement Crowther's Adventure game using OOP in Python. Eventually, your project will be implemented in a number of separate files that each contain some part of the code. Practicing with the design of programs using OOP is the main goal of this project. For most parts, we offer strong guidelines on how to implement your code; but for other parts, figuring out how to fit new functionality is your responsibility.
+In this project, your goal is to implement Crowther's Adventure game using OOP in Python. Eventually, your project will be implemented in a number of separate files that each contain some part of the code. Practicing with the design of programs using OOP is the main goal of this project. For most parts, we offer strong guidelines on how to implement your code; but for other parts, figuring out how to fit new functionality is your responsibility.
 
 > All parts of this final assignment are to be done individually. Feel free to discuss programming strategies and overall design with other students, but refrain from diving into specifics about how to write code for particular parts of the program.
 
@@ -27,7 +27,7 @@ Together, all these places in the virtual world can be mapped out to get an idea
 
 ![](../../map.png){:.w300}
 
-You can find a full map, including a spoiler-free version, [at this website](http://www.spitenet.com/cave/), but note that you will be implementing a portion of the full map!
+You can find a full map, including a spoiler-free version, [at this website](http://www.spitenet.com/cave/).
 
 And there is more than just navigating: at all times you can ask for `HELP` for an explanation of the game, or `LOOK` to get a detailed description of the room you are in.
 From the previous example you could see that the second time a room is entered a shorter description was shown. If we were to enter the `LOOK` command we would again see the following:
