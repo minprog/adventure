@@ -14,15 +14,15 @@ Let's finish the game by adding a few commands and a synonyms feature.
 		HELP prints instructions for the game.
 		LOOK lists the complete description of the room and its contents.
 
--   `LOOK` prints a full description of the room the player is currently in, even if the room was visited earlier.
+-   `LOOK` prints a long description of the room the player is currently in, even if the room was visited earlier.
 
 		Inside building
 		> LOOK
 		You are inside a building, a well house for a large spring.
 
-For the latter, should implement a method `get_long_description` in `Adventure`, which will always return the long description.
-
 
 ## Synonyms
 
-Implement Synonyms. Note that your adventure game does not implement all commands in the synonyms data file! Implement it in such a way that everything still works as expected, and do not accept commands like `I` or `INVENTORY`! In this case, it's advisable to not write a full class to manage synonyms, but use a standard dictionary instead.
+The file `Synonyms.dat` contains a list of shortcuts that players should be able to use when navigating the game, saving them a bit of typing. Instead of `WEST`, players should be able to enter `W`.
+
+Implement synonyms for your game.
