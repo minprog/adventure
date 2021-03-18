@@ -17,11 +17,7 @@ The most elementary function of this game is moving around between rooms. The fo
 
 5. Go to 2.
 
-Let's implement the `move()` method for the `Adventure` class, and then allow players to actually move around using this method.
-
-The `move` method has one parameter, `direction`, which should be connected to another room in the game graph.
-
-As an implementation detail, `move` should also return a boolean `True` or `False` depending on whether the move was possible (when is the move not possible?). The main program can use this result to notify the user if the move could not be performed.
+Implement the `move()` method for the `Adventure` class. The `move` method has one parameter, `direction`, which should help you find the room to move to. As an implementation detail, `move` should also return a boolean `True` or `False` depending on whether the move was possible (when is the move not possible?). The main program can use this result to notify the user when the move could not be performed.
 
 
 ## Prompting for commands
@@ -38,24 +34,15 @@ We're going to support a few different commands, but first of all, let's allow p
 
 - Finally, build in some feedback to your player in the `main` loop. If they attempt a command that is not a valid direction, tell them they entered an "Invalid command." and prompt for another command using the '>'.
 
-		> OUT
-		Invalid command.
-		>
-
-
-## Short and long descriptions
-
-When a player enters a room they've already seen, the short description will be displayed instead of the long one. How should we keep track of that?
-
-To handle this, you can add a **flag** variable to the `Room` class. A flag is another name for a boolean value, but in this case it can be used to determine if the room has already been visited and whether to display the short description.
-
-Add the flag to the `Room` initializer and change `description` to return the correct description depending on the flag. Also add a method to allow the visited flag to be set to `True` and call this method **right before leaving the room**.
+        > OUT
+        Invalid command.
+        >
 
 
 ## Testing
 
-Now that you have implemented moving around, you can test the game by playing (part of) it!
+Now that you have implemented moving around, you can test the game by playing it!
 
-Also, make sure your program still works if you transition from the **Tiny** map to the **Small** map. So try the game again, but like this:
+When you have verified that the game works correctly using the **Tiny** map, check that it also works when you load the **Small** map:
 
     $ python3 adventure.py Small
