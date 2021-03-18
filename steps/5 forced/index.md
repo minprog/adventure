@@ -20,7 +20,7 @@ If a player enters a room that has a direction named `FORCED`:
 
 - the long room description will be printed (even if already visited),
 - the player will be immediately moved back to the connected room,
-- the description for the connected room will be printed.
+- the description for the connected room will be printed (which will now be the short one).
 
 
 ## Hint
