@@ -1,15 +1,16 @@
 # Adventure: introduction
 
-## tl;dr
+In this project, your goal will be to implement Crowther's Adventure game using OOP in Python. Eventually, your project will be implemented in a number of separate files that each contain some part of the code. Practicing with the design of programs using OOP is the main goal of this project. For most parts, we offer strong guidelines on how to implement your code; but for other parts, figuring out how to fit new functionality is your responsibility.
 
-- Implement Crowther's Adventure game using OOP in Python.
-- Play your game!
+> All parts of this final assignment are to be done individually. Feel free to discuss programming strategies and overall design with other students, but refrain from diving into specifics about how to write code for particular parts of the program.
 
 ## Background
 
-Back in the days, before dedicated graphics cards were a thing, text-based adventure games were incredibly popular. This type of game consists entirely out of text, and is traversed by commands much like the ones you would enter in the terminal. One such game is Colossal Cave Adventure, created by [William Crowther](https://en.wikipedia.org/wiki/William_Crowther_(programmer)) in 1975, that served as the inspiration for the text adventure game genre.
+Back in the days, before computer graphics on personal computers (PCs) were a thing, text-based adventure games were incredibly popular. This type of game consists entirely out of text, and is traversed by typing in commands, much like those one would enter in the terminal to navigate the file system.
 
-In Adventure you have to navigate between "Rooms" through commands such as "WEST" and "EAST", but also "IN" or "OUT":
+One such game is Colossal Cave Adventure, created by [William Crowther](https://en.wikipedia.org/wiki/William_Crowther_(programmer)) in 1975. This game served as an inspiration for all of the text adventure game genre. The commands that a player enters in Adventure can be words like "IN" and "OUT", or maybe "WEST" and "EAST", each suggesting a **direction** that is taken to navigate the "virtual world".
+
+Here is an example where the player is displayed a description of the current place in the virtual world, then they enter a command which leads to another place, and so on:
 
     You are standing at the end of a road before a small brick
     building. A small stream flows out of the building and
@@ -22,13 +23,13 @@ In Adventure you have to navigate between "Rooms" through commands such as "WEST
     Outside building.
     >
 
-That first part of the adventure "map" may look like this:
+Together, all these places in the virtual world can be mapped out to get an idea of how everything is connected. The very first part of the adventure "map" may look like this:
 
 ![](../../map.png){:.w300}
 
-You can find the full map, including a spoiler-free version, [at this website](http://www.spitenet.com/cave/), but note that you will be implementing a portion of the full map!
+You can find a full map, including a spoiler-free version, [at this website](http://www.spitenet.com/cave/), but note that you will be implementing a portion of the full map!
 
-But there is more than just navigating, at all times you can ask for `HELP` for an explanation of the game, or `LOOK` to get a detailed description of the room you are in.
+And there is more than just navigating: at all times you can ask for `HELP` for an explanation of the game, or `LOOK` to get a detailed description of the room you are in.
 From the previous example you could see that the second time a room is entered a shorter description was shown. If we were to enter the `LOOK` command we would again see the following:
 
     > LOOK
@@ -38,7 +39,7 @@ From the previous example you could see that the second time a room is entered a
     to the west.
     >
 
-The adventure "map" is provided in a few **data files**, that contain room names and description, and in particular, information about which rooms are connected to other rooms, and using which commands.
+The adventure "map" is provided in a few **data files**, that contain room names and description, and in particular, information about which rooms are connected to other rooms, and using which commands. None of this information is "hard coded" into the program!
 
 Though Crowther originally wrote his game in Fortran, an imperative programming language that has been around since the 1950s, we will be taking a more modern approach to its implementation, using object-oriented programming (OOP). OOP is particularly suited to Adventure, because its main idea is a series of rooms that are connected. Each room will be an object, and all of these objects will point to each other.
 
@@ -59,19 +60,19 @@ Implement an object-oriented version of Crowther's Adventure game using the clas
     * managing items and inventory
 
 
-### Distribution
-
-	$ wget https://github.com/minprog/adventure/raw/2020/steps/adventure.zip
-	$ unzip adventure.zip
-	$ rm adventure.zip
-	$ cd adventure
-	$ ls
-	adventure.py  data/
-
-
 ## Understanding
 
-### `data/`
+Download the starter code along with a few versions of the game data:
+
+    $ cd ~/problems
+    $ wget https://github.com/minprog/adventure/raw/2020/steps/adventure.zip
+    $ unzip adventure.zip
+    $ rm adventure.zip
+    $ cd adventure
+    $ ls
+    adventure.py  data/
+
+### Game data
 
 The `data` directory contains data files with which you can create two versions of adventure. `TinyAdv.dat` is the smallest adventure game, consisting of 4 rooms. Here are its contents in full:
 
@@ -99,21 +100,20 @@ The third and final part describes objects that may be found in the game. You wi
 
 Also included in your distribution is `SmallAdv.dat`, which is a bit larger and includes more advanced interactions, as well as `Crowther.dat`, which is the full game.
 
-
-### `adventure.py`
+### Starter code
 
 Take a look at `adventure.py`. The file has two parts.
 
 1. The `Adventure` class contains all methods that make the game work:
 
-	- The `__init__` method ensures that all is set for playing an adventure game. In particular, it uses other methods to load game data and point `current_room` to the first room in the map.
+	- The `__init__` method ensures that all is set for playing an adventure game. In particular, it calls a method (that does not exist yet) to load game data.
 
-	- The `room_description` method provides the description of the current room, the room the player is in.
+	- The `room_description` method provides the description of the current room, the room the player is in. (It also calls a method that does not exist yet.)
 
 	- Moving around in the game is handled by the `move` method, by setting the "current" room to a different one.
 
 2. The `if __name__ == "__main__"` part, which contains the main "game loop" of the program. After introducing the game, it repeatedly asks for a command from the user, and tries to perform that command.
 
-Make sure that you understand every line of code in `adventure.py` before you start.
+Make sure that you understand every line of code in `adventure.py` before you start. Think about the methods that do not exist yet: what is their responsibility in making the game work?
 
-> A hard constraint in this program is that the `Adventure` class may not `print` anything. All other printing should be done in the `__main__` part. And in return, the `__main__` part may, aside from printing things, only call methods in the `Adventure` class. It may not access methods and/or attributes from other classes that you will be writing. As such, each class will have separate responsibilities.
+> A hard constraint in this program is that the `Adventure` class may not `print` anything. All printing should be done in the `__main__` part. And in return, the `__main__` part may, aside from printing things, only call methods in the `Adventure` class. It may not access methods and/or attributes from other classes that you will be writing. As such, each class will have separate responsibilities.
