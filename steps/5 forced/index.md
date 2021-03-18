@@ -23,6 +23,6 @@ If a player enters a room that has a direction named `FORCED`:
 - the description for the connected room will be printed.
 
 
-## Hints
+## Hint
 
-Currently, the `Room` class decides whether to print the short or long description. Change it to account for the specification above.
+Currently, the `Room` class decides whether to print the short or long description. Change it to account for the specification above. You should be able to fully handle generating the right description in your code for the `Room` class.
