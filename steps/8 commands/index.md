@@ -1,10 +1,11 @@
-# Adventure: final touches
+# Adventure: additional commands
 
-Let's finish the game by adding a few commands and a synonyms feature.
+`HELP` and `LOOK` are two commands to make the game a bit easier to use.
 
-## Additional commands
 
-`HELP` and `LOOK` are two commands to make the game a bit easier to use. Implement those in the following way:
+## What to do
+
+Implement the additional commands in the following way:
 
 -   `HELP` prints instructions to remind the player of their commands and how to use them. It should behave as follows:
 
@@ -19,10 +20,3 @@ Let's finish the game by adding a few commands and a synonyms feature.
 		Inside building
 		> LOOK
 		You are inside a building, a well house for a large spring.
-
-
-## Synonyms
-
-The file `Synonyms.dat` contains a list of shortcuts that players should be able to use when navigating the game, saving them a bit of typing. Instead of `WEST`, players should be able to enter `W`.
-
-Implement synonyms for your game.
