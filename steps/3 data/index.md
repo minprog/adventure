@@ -1,6 +1,6 @@
 # Adventure: reading data files
 
-Take another look at the data in `TinyAdv.dat`. **Parsing** is the task of loading this information into memory in a structured way. You are going to read the room information from the first section of the file, and the connections information from the second section of the file. We'll leave the third section, with game objects, for later.
+Take another look at the data in `TinyAdv.dat`. **Parsing** is the task of loading this information into memory in a structured way. You are going to read the room information from the first section of the file, and the connections information from the second section of the file. We'll leave the third section, with game items, for later.
 
 
 ## Background
