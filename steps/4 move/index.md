@@ -7,7 +7,7 @@ Now that we have a couple of rooms, we can start implementing the game itself. W
 
 The most elementary function of this game is moving around between rooms. The following steps allow a text-based game such as Adventure to simulate movement:
 
-1. The current room has a description, which is printed to the screen to allow the player to understand where they are.
+1. The "current room" has a description, which is printed to the screen to allow the player to understand where they are.
 
 2. The player enters a direction they want to head into, such as "DOWN".
 
@@ -17,7 +17,7 @@ The most elementary function of this game is moving around between rooms. The fo
 
 5. Go to 2.
 
-Implement the `move()` method for the `Adventure` class. The `move` method has one parameter, `direction`, which should help you find the room to move to. As an implementation detail, `move` should also return a boolean `True` or `False` depending on whether the move was possible (when is the move not possible?). The main program can use this result to notify the user when the move could not be performed.
+Implement the `move` method for the `Adventure` class. The `move` method has one parameter, `direction`, which should help you find the room to move to. As an implementation detail, `move` should also return a boolean `True` or `False` depending on whether the move was possible (when is the move not possible?). The main program can use this result to notify the user when the move could not be performed.
 
 
 ## Prompting for commands
@@ -26,18 +26,17 @@ Now check out the part of `adventure.py` that starts with `if __name__ == '__mai
 
 We're going to support a few different commands, but first of all, let's allow players to move around in the game using directions like "IN" or "WEST".
 
-- First connect the `main` input loop to the `move` method, by passing the entered `command` to the adventure class's `move` method.
+-   First connect the `main` input loop to the `move` method, by passing the entered `command` to the `Adventure` class's `move` method.
 
-- Write code in `move` to change the game state such that the player is moved to the next room, and then display the new room's description.
+-   Write code to display the new room's description.
 
-- Note that the `command` is immediately converted to lowercase in the main loop, so it's also passed in lowercase to `move`. Make sure that `move` correctly finds connections when given a lowercase direction!
-
-- Finally, build in some feedback to your player in the `main` loop. If they attempt a command that is not a valid direction, tell them they entered an "Invalid command." and prompt for another command using the '>'.
+-   Finally, build in some feedback to your player in the `main` loop. If they attempt a command that is not a valid direction, tell them they entered an "Invalid command." and prompt for another command using the '>'.
 
         > OUT
         Invalid command.
         >
 
+    You can use the **return value** of the `move` method to know if you need to print an error message.
 
 ## Testing
 

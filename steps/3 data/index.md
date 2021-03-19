@@ -10,11 +10,11 @@ You will need to implement parsing in two **phases**: first create all room obje
 
 ## Getting started
 
-- Create a file called `loader.py`, which will define a `load_room_graph()` function (this is just a helper function, so you do not create a class).
+- Create a file called `loader.py`, which will define a `load_room_graph` function (this is just a helper function, so you do not create a class).
 
 - The file needs access to the `Room` class (so it can create `Room`-type objects), so it needs to specify `from room import Room` right at the top.
 
-- According to the instructions below, write a function `load_room_graph()` that creates a graph of all room objects pointing to each other and returns a reference to the "first" room.
+- According to the instructions below, write a function `load_room_graph` that creates a graph of all room objects pointing to each other and returns a reference to the "first" room.
 
 
 ## A small intermezzo on reading files
@@ -48,7 +48,11 @@ By making use of this particular behavior of `readline` we can parse the data fi
 
 ## Phase 1: creating rooms
 
-Now implement the first phase of `load_room_graph()` in `adventure.py`. Start by opening the file and then write a loop to read the room data:
+Now implement the first phase of `load_room_graph` in `adventure.py`. You will store room information in a **dictionary** that maps a room number to a room object.
+
+> We use a dictionary because room numbers start at 1 and are not guaranteerd to be sequential. Also, we do not know in advance how many rooms are going to be needed. Hence, it may become too tricky to use a **list** for collecting rooms. So instead, we use a dictionary. Because we use integers as keys, it will almost *look* like we're using a list, but with a lot more flexibility.
+
+Start by opening the file and then write a loop to read the room data:
 
 1. read a line
 2. `split()` it into a list, making sure you split on the TAB character (written as `"\t"`)
@@ -58,7 +62,7 @@ Now implement the first phase of `load_room_graph()` in `adventure.py`. Start by
 
 Make sure the loop ends as soon as `readline` returns *just* a newline character. Also, don't forget to clean the data. Each line has a newline character at the end, and this character should *not* end up in the room object description! Recall how to remove a stray newline from the end of a string?
 
-Having done the above should lead to a fully initialized `self.rooms` dictionary:
+Having done the above should lead to a fully initialized `rooms` dictionary:
 
     {
         1: <room.Room object at 0x7f325cbc4d68>,
@@ -79,10 +83,10 @@ Because all rooms have now been saved into memory, we can read the connection da
 
 We leave designing this loop up to you, but remember that each line starts with the room number that the connection starts from, and that each line may contain *multiple* other rooms to connect to. This is good moment to take out pen and paper and design the algorithm.
 
-To actually connect rooms, you will have to look them up in `self.rooms` by number, and then make a connection:
+To actually connect rooms, you will have to look them up in `rooms` by number, and then make a connection:
 
-    source_room = self.rooms[1]
-    destination_room = self.rooms[2]
+    source_room = rooms[1]
+    destination_room = rooms[2]
     source_room.add_connection("WEST", destination_room)
 
 

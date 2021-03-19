@@ -18,11 +18,16 @@ Whenever a room contains a connection labeled `FORCED`, and a player enters the 
 
 If a player enters a room that has a direction named `FORCED`:
 
-- the long room description will be printed (even if already visited),
-- the player will be immediately moved back to the connected room,
-- the description for the connected room will be printed (which will now be the short one).
+- the long room description will be printed (even if already visited);
+- the player will be immediately moved back to the connected room;
+- the description for the connected room will be printed (may be short or long, as usual).
 
 
 ## Hint
 
 Currently, the `Room` class decides whether to print the short or long description. Change it to account for the specification above. You should be able to fully handle generating the right description in your code for the `Room` class.
+
+
+## Testing
+
+Take a look at `SmallAdv.dat`. Room 7 is the one that has a `FORCED` connection. To test your code, you will need to move to that room by entering `DOWN`, `DOWN`, `DOWN`, and `WEST`.

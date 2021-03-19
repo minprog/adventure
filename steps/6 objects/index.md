@@ -43,7 +43,7 @@ Listing what you have should look like this:
 
 - You must implement a new `Item` class that represents objects within the game (it should be obvious that it would not be advisable to name a class `Object`, hence the alternative that we propose here). Place it in its own file `item.py`.
 
-- Then you should add variables such that each `Room` object can "contain" or point to several `Item` objects. And, because a game item cannot only reside in a given room, but also be picked up and kept by the player, you should also create a place in the `Adventure` class to contain any number of `Item` objects (what kind of variable would be appropriate for that?).
+- Add an attribute to store `Item` objects in each `Room`. And, because a game item cannot only reside in a given room, but also be picked up and kept by the player, you should also create a place in the `Adventure` class to contain `Item` objects (what kind of variable would be appropriate for that?).
 
 - Then you need to make sure objects are loaded from the data file and place into the correct initial rooms after loading.
 

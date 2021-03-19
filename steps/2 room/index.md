@@ -22,7 +22,7 @@ Because each room will point to other rooms, together they will form a [**graph*
 Compare this to the hand-drawn map fragment that was shown in the introduction. What we're doing is to model the idea of the game into a network of objects. The structure of both is quite alike.
 
 
-## Implementation
+## Room class
 
 - To store information about the room itself, implement a class. Create a file called `room.py` to define a class called `Room`.
 
@@ -30,17 +30,20 @@ Compare this to the hand-drawn map fragment that was shown in the introduction. 
 
 - A "new" room has not been visited before, so that's why you should also set a variable in the initializer to represent that (such a variable is called a "flag").
 
-- Write a method `set_visited()` that allows us to mark the room as visited when that happens.
+- Write a method `set_visited` that allows us to mark the room as visited when that happens.
 
-- Write a method `description()` that returns the short/long description depending on whether the room thas been visited before.
+- Write a method `description` that returns the short/long description depending on whether the room thas been visited before.
 
-- Create a place to store connections. In each room, we need a mapping between, one the one hand, a string representing a direction such as `"WEST"`, and on the other hand, a reference to another room object. What Python data structure is best to store mappings? Create an empty variable in the initializer to prepare this.
 
-- Write a method `add_connection()`, which accepts a direction (string) and a room (another Room object), and saves it in the connection storage.
+## Connections
 
-- Write a method `has_connection()` that can determine if there is a connection available from the room to another room, given the direction.
+- Create an intance variable in `Room` to keep track of connections. Connections combine a string representing a direction such as `"WEST"` with a reference to another room object. What Python data structure is best to store such mappings? Create an empty variable in the initializer to prepare this.
 
-- Write a method `get_connection()` that retrieves the actual `Room` object that is found given a specific direction.
+- Write a method `add_connection`, which accepts a direction and a room object, and saves it in the connection storage.
+
+- Write a method `has_connection` that can determine if there is a connection available from the room to another room, given the direction.
+
+- Write a method `get_connection` that retrieves the actual `Room` object that is found given a specific direction.
 
 > A hard constraint in this program is that the `Room` class may not access (use) other classes. Its methods may only manipulate `self` and any access only objects that are passed to it as arguments to method calls.
 
