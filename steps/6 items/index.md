@@ -41,13 +41,13 @@ Listing what you have should look like this:
 
 ## Implementation
 
-- You must implement a new `Item` class that represents items within the game. Place it in its own file `item.py`.
+- Implement a new `Item` class that represents items within the game. Place it in its own file `item.py`.
 
 - Add an attribute to store `Item` objects in each `Room`. And, because a items can be picked up and held by the player, you should also create an attribute in the `Adventure` class to contain `Item` objects (what kind of variable would be appropriate for that?).
 
 - Then make sure items are loaded from the data file and place into the correct initial rooms after loading.
 
-- And finally, you can implement user interface code for items, in particular by modifying the `LOOK` command and implementing `TAKE` and `DROP` commands. But, note that you should always call methods on the `Adventure` class to do these actions! Do not directly manipulate elements (variables) from that class or from other classes.
+- And finally, implement user interface code for items, in particular the `TAKE` and `DROP` commands. Do note that you should always call methods on the `Adventure` class to do these actions! Do not directly manipulate elements (variables) from that class or from other classes.
 
 And to test, don't forget to load the Crowther map:
 
