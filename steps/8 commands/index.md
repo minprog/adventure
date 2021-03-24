@@ -20,3 +20,9 @@ Implement the additional commands in the following way:
 		Inside building
 		> LOOK
 		You are inside a building, a well house for a large spring.
+
+
+-   `QUIT` quits the game. There's no need to print any parting message.
+
+		Inside building
+		> QUIT
