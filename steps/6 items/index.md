@@ -32,12 +32,6 @@ Putting down items should work like this:
     > TAKE KEYS
     KEYS taken.
 
-Listing what you have should look like this:
-
-    > INVENTORY
-    KEYS: a set of keys
-    LAMP: a brightly shining brass lamp
-
 
 ## Implementation
 
