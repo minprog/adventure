@@ -5,3 +5,4 @@ check50:
     - !require "adventure.py"
     - !require "room.py"
     - !require "item.py"
+    - !require "loader.py"
