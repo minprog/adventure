@@ -72,7 +72,7 @@ Having done the above should lead to a fully initialized `rooms` dictionary:
 Finally, below that code, add a few assertions you know to be true:
 
     assert 1 in rooms
-    assert rooms[1].name == "Outside building"
+    assert rooms[1]._short_description == "Outside building"
 
 The starter version of `adventure.py` already calls the `load_room_graph()` function, so you can now run `adventure.py`, and then make sure none of the assertions fail. (Remember to later remove any assertions that depend on particular descriptions, because your program may be used using a different data file!)
 
@@ -106,6 +106,6 @@ So when all is done, we have rooms and their connections. What can we find in me
 Also add a few assertions to `load_room_graph()` that should be true after making connections.
 
     assert rooms[1].has_connection("WEST")
-    assert rooms[2].get_connection("EAST").name == "Outside building"
+    assert rooms[2].get_connection("EAST")._short_description == "Outside building"
 
 You can again run `adventure.py` and make sure none of the assertions fail.
