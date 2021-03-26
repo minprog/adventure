@@ -200,7 +200,7 @@ def special_move():
                               "connections.")
 
 
-@check50.check(special_move)
+@check50.check(special_move, max_log_lines=1000)
 def won():
     """Testing Crowther Adventure win condition."""
     moves = ["IN", "TAKE KEYS", "OUT", "DOWN", "DOWN",
