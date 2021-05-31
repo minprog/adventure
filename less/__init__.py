@@ -141,7 +141,7 @@ def commands():
                               f"    {error}")
 
 
-@check50.check(helper_commands)
+@check50.check(move_repeatedly)
 def forced_move():
     """Checking if FORCED immediately moves the player."""
     check = check50.run(RUN_SMALL)
@@ -179,7 +179,7 @@ def synonyms():
     os.rename(r'data/Synonyms.dat', r'data/NonsensicalSynonyms.dat')
     os.rename(r'data/Synonyms2.dat', r'data/Synonyms.dat')
 
-@check50.check(synonyms)
+@check50.check(move_repeatedly)
 def game_over():
     """Checking if the program correctly handles winning/losing."""
 
