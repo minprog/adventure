@@ -22,6 +22,7 @@ Implement the additional commands in the following way:
 		> LOOK
 		You are inside a building, a well house for a large spring.
 		KEYS: a set of keys
+		WATER: a bottle of water
 
 -	`INVENTORY` prints all items in the player's  inventory. It should behave as follows depending on what is in the inventory:
 
