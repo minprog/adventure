@@ -6,11 +6,13 @@ Items that are lying around in a room should look like this:
 
     You are inside a building, a well house for a large spring.
     KEYS: a set of keys
+    WATER: a bottle of water
 
 Picking up items should work like this:
 
     You are inside a building, a well house for a large spring.
     KEYS: a set of keys
+    WATER: a bottle of water
     > TAKE KEYS
     KEYS taken.
     > TAKE KEYS
@@ -23,6 +25,7 @@ Putting down items should work like this:
 
     You are inside a building, a well house for a large spring.
     KEYS: a set of keys
+    WATER: a bottle of water
     > TAKE KEYS
     KEYS taken.
     > DROP KEYS
