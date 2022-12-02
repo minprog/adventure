@@ -392,7 +392,7 @@ The adventure game has a special feature called `FORCED` movements. If a player 
 
     - note that you can use the existing `get_long_description`!
 
-- Make sure that forced movedment does not interact with the `BACK` command. E.g., when you go from room 1 to room 2, but are then forced into room 3, the `BACK` command should take you to room 1 again!
+- Make sure that forced movement does not interact with the `BACK` command. E.g., when you go from room 1 to room 2, but are then forced into room 3, the `BACK` command should take you to room 1 again!
 
 
 ## Step 8: Adding "objects"
