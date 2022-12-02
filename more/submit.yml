@@ -5,6 +5,7 @@ files:
         - room.py
         - item.py
         - history.py
+        - documentatie.pdf
 check:
     tool: check50
     slug: minprog/adventure/2022/more
