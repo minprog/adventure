@@ -1,4 +1,4 @@
-# Adventure (Hacker edition)
+# Adventure
 
 ## tl;dr
 
@@ -10,7 +10,6 @@
 Back in the days, before graphics cards were a thing, text-based adventure games were incredibly popular. This type of game consists entirely out of text, and is traversed by commands much like the ones you would enter in the terminal. One such game is Colossal Cave Adventure, created by [William Crowther](https://en.wikipedia.org/wiki/William_Crowther_(programmer)) in 1975, that served as the inspiration for the text adventure game genre.
 
 In Adventure you have to navigate between "Rooms" through commands such as "WEST" and "EAST", but also "IN" or "OUT":
-
 
     You are standing at the end of a road before a small brick
     building. A small stream flows out of the building and
@@ -81,7 +80,7 @@ Implement an object-oriented version of Crowther's Adventure game using the clas
 
 ### Distribution
 
-	$ wget https://github.com/minprog/adventure/raw/2020/more/adventure.zip
+	$ wget https://github.com/minprog/adventure/raw/2022/more/adventure.zip
 	$ unzip adventure.zip
 	$ rm adventure.zip
 	$ cd adventure
@@ -251,12 +250,14 @@ Having done the above should lead to a fully initialized `self.rooms` dictionary
 		2: <room.Room object at 0x7f325cbc4fd0>
 	}
 
-Finally, below that code, add a few assertions you know to be true:
+Finally, below that code, add a few assertions you know to be *always* true:
 
     assert 1 in self.rooms
     assert self.rooms[1].name == "Outside building"
 
-You can then run `adventure.py` and make sure none of the assertions fail. (You should later remove any assertions that depend on particular descriptions, because your program may be used using a different data file!)
+(We know this is *always* true in the sense that all three data files that we provide conform to these assertions.)
+
+You can then run `adventure.py` and make sure none of the assertions fail. (You should probably at some point remove any assertions that depend on particular descriptions, because your program may be used using a different data file!)
 
 
 ### Phase 2: making connections
@@ -320,8 +321,7 @@ We're going to support a few different commands, but first of all, let's allow y
 		>
 
 
-
-## Step 3: Short and long descriptions?
+## Step 3: Short and long descriptions
 
 If a player enters a room they've already seen, only give them the short description. How should we keep track of that?
 
@@ -354,18 +354,31 @@ As a final step for making the basic game work, we'll add a few commands that ma
         Inside building
         > LOOK
         You are inside a building, a well house for a large spring.
+        KEYS: a set of keys
+        WATER: a bottle of water
 
 For the latter, should implement a method `get_long_description` in `Adventure`, which will always return the long description.
 
 
-## Step 5: Try a larger map
+## Step 6: Implement BACK
+
+Sometimes you make a mistake in playing Adventure and you'd like to go BACK. This is not always easy. We will provide a "secret" command that will take the player back to the previous room.
+
+This is one feature that is also known as the "Undo" command in various other programs. The approach that we will take here is save references to all rooms that we pass and when asked to go BACK, we take the previous room and move there.
+
+To implement this, you must make a class called `History`, which will behave quite like a *stack ADT*. You can push a room onto it, and you can retrieve the previous room. It doesn't have to do much more!
+
+So create this class and mack the `BACK` command work. Tip: everytime a room is *left* for another room, push the room to history.
+
+
+## Step 6: Try a larger map
 
 Before continuing, make sure your program still works if you transition from the **Tiny** map to the **Small** map! From now on, when testing, run the game like this:
 
     $ python adventure.py Small
 
 
-## Step 6: Forced movement
+## Step 7: Forced movement
 
 Sometimes a player will attempt a movement they cannot make. For example, in the Small adventure, when going WEST from the "Outside grate" room (6), one finds oneself at the edge of an "unpassable stream". The only way is going back the "Outside grate" room.
 
@@ -379,8 +392,10 @@ The adventure game has a special feature called `FORCED` movements. If a player 
 
     - note that you can use the existing `get_long_description`!
 
+- Make sure that forced movedment does not interact with the `BACK` command. E.g., when you go from room 1 to room 2, but are then forced into room 3, the `BACK` command should take you to room 1 again!
 
-## Step 7: Adding "objects"
+
+## Step 8: Adding "objects"
 
 Now that you are sure the game is playable using the Tiny and Small maps, let's implement the remaining feature needed to be able to play the Crowther map as well. As seen above, the data file contains descriptions for objects that are placed in the game (each in a default room) and then picked up, taken along, and dropped again by the player. The Crowther game is designed in a way that some routes can only be taken when the player is carrying certain objects.
 
@@ -388,11 +403,13 @@ Seeing items in the game should look like this:
 
     You are inside a building, a well house for a large spring.
     KEYS: a set of keys
+    WATER: a bottle of water
 
 Picking up items should work like this:
 
     You are inside a building, a well house for a large spring.
     KEYS: a set of keys
+    WATER: a bottle of water
     > TAKE KEYS
     KEYS taken.
     > TAKE KEYS
@@ -405,6 +422,7 @@ Putting down items should work like this:
 
     You are inside a building, a well house for a large spring.
     KEYS: a set of keys
+    WATER: a bottle of water
     > TAKE KEYS
     KEYS taken.
     > DROP KEYS
@@ -422,20 +440,20 @@ Listing whay you have should look like this:
 
 To do this:
 
-- you must implement a new `Item` class that represents objects within the game (it should be obvious that it would not be advisable to name a class `Object`, hence the alternative that we propose here). Place it in its own file `item.py`.
+- You must implement a new `Item` class that represents objects within the game (it should be obvious that it would not be advisable to name a class `Object`, hence the alternative that we propose here). Place it in its own file `item.py`.
 
-- then you should add variables such that each `Room` object can "contain" or point to several `Item` objects. And, because a game item cannot only reside in a given room, but also be picked up and kept by the player, you should also create a place in the `Adventure` class to contain `Item` objects.
+- Then you should add variables such that each `Room` object can "contain" or point to several `Item` objects. And, because a game item cannot only reside in a given room, but also be picked up and kept by the player, you should also create a place in the `Adventure` class to contain `Item` objects.
 
-- then you need to make sure objects are loaded from the data file and place into the correct initial rooms after loading.
+- Then you need to make sure objects are loaded from the data file and place into the correct initial rooms after loading.
 
-- and finally, you can implement user interface code for items, in particular by modifying the `LOOK` command and implementing `TAKE` and `DROP` commands. But, note that you should always call methods on the `Adventure` class to do these actions! Do not directly manipulate elements (variables) from that class or from other classes.
+- And finally, you can implement user interface code for items, in particular by modifying the `LOOK` command and implementing `TAKE` and `DROP` commands. But, note that you should always call methods on the `Adventure` class to do these actions! Do not directly manipulate elements (variables) from that class or from other classes.
 
 And to test, don't forget to load the Crowther map:
 
     $ python adventure.py Crowther
 
 
-## Step 8: Conditional movement
+## Step 9: Conditional movement
 
 Having objects in possession can allow your player to move to different rooms than without those objects, which opens up possibilities not seen before (like winning!). This is encoded in the Crowther data file. For example, room 9 has the following connections:
 
@@ -446,12 +464,12 @@ The east and west exit each connect, in normal conditions, to rooms 8 and 10, re
 As you can see, you will need to change your code for reading the data files a bit. Then you'll also need to make changes to your `Room` class, the `Adventure` class and the main game loop!
 
 
-
-## Step 9: Synonyms
+## Step 10: Synonyms
 
 Finally, implement Synonyms. Note that your adventure game does not implement all commands in the synonyms data file! Implement it in such a way that everything still works as expected! In this case, it's advisable to not write a full class to manage synonyms, but use a standard dictionary instead. We can do this because the synonyms are not really part of the game itself, but more of the user interface for the game.
 
-## Step 9: Check your work
+
+## Step 11: Check your work
 
 Have a good look at the constraints we **noted earlier**:
 
@@ -463,12 +481,6 @@ Have a good look at the constraints we **noted earlier**:
 
 - If you need help testing "winning" the game, this [solution](win.txt) (spoiler alert!) may come in handy.
 
-### `check50`
+- Use our checks:
 
-	check50 -l minprog/adventure/2020/more
-
-
-### `style50`
-
-	style50 adventure.py
-	style50 room.py
+    check50 -l minprog/adventure/2022/more

@@ -5,4 +5,4 @@ files:
         - room.py
 check:
     tool: check50
-    slug: minprog/adventure/2020/less
+    slug: minprog/adventure/2022/less

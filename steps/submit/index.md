@@ -13,7 +13,7 @@ Keep these in mind before submitting your final solution.
 
 ## check50
 
-	check50 -l minprog/adventure/2020/more
+	check50 -l minprog/adventure/2022/more
 
 
 ## style50

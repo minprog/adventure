@@ -65,7 +65,7 @@ Implement an object-oriented version of Crowther's Adventure game using the clas
 Download the starter code along with a few versions of the game data:
 
     $ cd ~/problems
-    $ wget https://github.com/minprog/adventure/raw/2020/steps/adventure.zip
+    $ wget https://github.com/minprog/adventure/raw/2022/steps/adventure.zip
     $ unzip adventure.zip
     $ rm adventure.zip
     $ cd adventure
