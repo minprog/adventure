@@ -356,7 +356,7 @@ As a final step for making the basic game work, we'll add a few commands that ma
 For the latter, should implement a method `get_long_description` in `Adventure`, which will always return the long description.
 
 
-## Step 6: Implement BACK
+## Step 5: Implement BACK
 
 Sometimes you make a mistake in playing Adventure and you'd like to go BACK. This is not always easy. We will provide a "secret" command that will take the player back to the previous room.
 
