@@ -82,13 +82,7 @@ Implement an object-oriented version of Crowther's Adventure game using the clas
 
 ### Distribution
 
-	$ wget https://github.com/minprog/adventure/raw/2022/more/adventure.zip
-	$ unzip adventure.zip
-	$ rm adventure.zip
-	$ cd adventure
-	$ ls
-	adventure.py  data/  room.py
-
+    $ curl -LO https://github.com/minprog/adventure/raw/2022/more/adventure.zip
 
 ## Understanding
 
