@@ -480,3 +480,8 @@ Have a good look at the constraints we **noted earlier**:
 - Use our checks:
 
     check50 -l minprog/adventure/2022/more
+
+
+## Submit
+
+**Tip: als je history.py nog niet hebt gemaakt, lever dan een leeg bestand in met die naam om de checks te kunnen doen.**
