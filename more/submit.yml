@@ -1,10 +1,7 @@
 name: adventure-more
 files:
     required:
-        - adventure.py
-        - room.py
-        - item.py
-        - history.py
+        - adventure-submit.zip
         - documentatie.pdf
 check:
     tool: check50
