@@ -171,7 +171,7 @@ Then you need to add three methods for managing and looking up connections:
 
 Now, implement the three methods for managing connections. You might need to read up on [dictionaries](https://docs.python.org/3/tutorial/datastructures.html#dictionaries).
 
-> A hard constraint in this program is that the `Room` class may not access (use) other classes. Its methods may only manipulate `self` and any access only objects that are passed to it as arguments to method calls.
+> A hard constraint in this program is that the `Room` class may not access (change) data in other classes. Its methods may only change variables in `self` and any read (but not change) objects that are passed to it as arguments to method calls.
 
 After implementing, you should test the class by starting Python and creating `Room` objects:
 
@@ -469,7 +469,7 @@ Finally, implement Synonyms. Note that your adventure game does not implement al
 
 Have a good look at the constraints we **noted earlier**:
 
-- A hard constraint in this program is that the `Room` class may not access (use) other classes. Its methods may only manipulate `self` and any access only objects that are passed to it as arguments to method calls.
+- A hard constraint in this program is that the `Room` class may not access (change) data in other classes. Its methods may only change variables in `self` and any read (but not change) objects that are passed to it as arguments to method calls.
 
 - A hard constraint in this program is that the `Adventure` class may not `print` anything. And in return, the `__main__` part may, aside from printing things, only call methods in the `Adventure` class. It may not ever directly access methods and/or attributes from the `Room class`!
 
