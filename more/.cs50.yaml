@@ -6,3 +6,4 @@ check50:
     - !require "room.py"
     - !require "item.py"
     - !require "history.py"
+    - !include "*.py"
