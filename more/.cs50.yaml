@@ -1,4 +1,4 @@
 check50:
   checks: __init__.py
   files:
-    - !exclude "*"
+    - !include "*"
