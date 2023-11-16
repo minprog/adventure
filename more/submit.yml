@@ -5,4 +5,4 @@ files:
         - documentatie.pdf
 check:
     tool: check50
-    slug: minprog/adventure/diagnostic/more
+    slug: minprog/adventure/2022/more
