@@ -1,11 +1,12 @@
 import check50
 import sys
 import os
+import glob
 
 @check50.check()
 def ls():
     """de volgende bestanden bestaan:"""
-    check50.data(output=str(os.listdir()))
+    check50.data(output=str(glob.glob("**", recursive=True)))
 
 # less = check50.import_checks("../less")
 # from less import *
