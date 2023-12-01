@@ -481,7 +481,12 @@ Have a good look at the constraints we **noted earlier**:
 
     check50 -l minprog/adventure/2022/more
 
+## Zipping and submitting
 
-## Submit
+To submit, you will need a zip-file containing just the Python files for your solution. These files may not be located in a subfolder inside the zip! So please follow the steps below.
 
-**Tip: als je history.py nog niet hebt gemaakt, lever dan een leeg bestand in met die naam om de checks te kunnen doen.**
+`cd` into the folder that contains `adventure.py` and then run this command to zip your solution:
+
+    zip adventure-submit.zip *.py
+
+If you did not implement `history.py` you will need to create a blank file with that name, otherwise the submission will not be accepted.
