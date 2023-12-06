@@ -2,8 +2,8 @@ import check50
 import sys
 import os
 
-RUN_TINY = f"{sys.executable} adventure.py Tiny"
-RUN_SMALL = f"{sys.executable} adventure.py Small"
+RUN_TINY = f"\"{sys.executable}\" adventure.py Tiny"
+RUN_SMALL = f"\"{sys.executable}\" adventure.py Small"
 
 room_1_name = "Outside building"
 room_1_description = ("You are standing at the end of a road before a "
