@@ -5,7 +5,7 @@ import sys
 less = check50.import_checks("../less")
 from less import *
 
-RUN_CROWTHER = f"{sys.executable} adventure.py Crowther"
+RUN_CROWTHER = f"\"{sys.executable}\" adventure.py Crowther"
 
 
 room_3_description = ("You are inside a building, a well house for a large "
