@@ -2,6 +2,7 @@ name: adventure-more
 files:
     required:
         - adventure-submit.zip
+    optional:
         - documentatie.pdf
 check:
     tool: check50
