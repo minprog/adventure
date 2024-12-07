@@ -5,7 +5,7 @@
 - Implement Crowther's Adventure game using OOP in Python.
 - Play your game!
 
-> Tijdens het maken, maar vooral tijdens het verbeteren en tunen van je oplossing, kun je een document bijhouden waarin je je verbeteringen bijhoudt. Als je dit goed doet maak je je leerproces extra zichtbaar, en dit kan bijdragen aan de score voor de opdracht.
+<!-- > Tijdens het maken, maar vooral tijdens het verbeteren en tunen van je oplossing, kun je een document bijhouden waarin je je verbeteringen bijhoudt. Als je dit goed doet maak je je leerproces extra zichtbaar, en dit kan bijdragen aan de score voor de opdracht. -->
 
 ## Background
 
@@ -489,4 +489,4 @@ To submit, you will need a zip-file containing just the Python files for your so
 
     zip adventure-submit.zip *.py
 
-If you did not implement `history.py` you will need to create a blank file with that name, otherwise the submission will not be accepted.
+<!-- If you did not implement `history.py` you will need to create a blank file with that name, otherwise the submission will not be accepted. -->
