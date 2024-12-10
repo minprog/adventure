@@ -54,7 +54,7 @@ Forgot what you've picked up throughout your journey? Using the `INVENTORY` comm
     > DROP keys
     Dropped.
     > INVENTORY
-    inventory is empty.
+    Your inventory is empty.
     >
 
 A player can use these items to pass otherwise unpassable blockades, such as the "strong steel grate".
@@ -345,13 +345,11 @@ As a final step for making the basic game work, we'll add a few commands that ma
         TAKE <item> take item from the room.
         DROP <item> drop item from your inventory.
 
--   `LOOK` prints a full description of the room the player is currently in, even if the room was visited earlier.
+-   `LOOK` prints a full description of the room the player is currently in, *even if the room was visited earlier*.
 
         Inside building
         > LOOK
         You are inside a building, a well house for a large spring.
-        KEYS: a set of keys
-        WATER: a bottle of water
 
 For the latter, should implement a method `get_long_description` in `Adventure`, which will always return the long description.
 
@@ -362,7 +360,7 @@ Sometimes you make a mistake in playing Adventure and you'd like to go BACK. Thi
 
 This is one feature that is also known as the "Undo" command in various other programs. The approach that we will take here is save references to all rooms that we pass and when asked to go BACK, we take the previous room and move there.
 
-To implement this, you must make a class called `History`, which will behave quite like a *stack ADT*. You can push a room onto it, and you can retrieve the previous room. It doesn't have to do much more!
+To implement this, you must make a class called `History` in a separate file called `history.py`, which will behave quite like a *stack ADT*. You can push a room onto it, and you can retrieve the previous room. It doesn't have to do much more!
 
 So create this class and mack the `BACK` command work. Tip: everytime a room is *left* for another room, push the room to history.
 
@@ -395,7 +393,7 @@ The adventure game has a special feature called `FORCED` movements. If a player 
 
 Now that you are sure the game is playable using the Tiny and Small maps, let's implement the remaining feature needed to be able to play the Crowther map as well. As seen above, the data file contains descriptions for objects that are placed in the game (each in a default room) and then picked up, taken along, and dropped again by the player. The Crowther game is designed in a way that some routes can only be taken when the player is carrying certain objects.
 
-Seeing items in the game should look like this:
+Seeing items when walking around in the game should look like this (this is the long description):
 
     You are inside a building, a well house for a large spring.
     KEYS: a set of keys
@@ -434,6 +432,14 @@ Listing whay you have should look like this:
     KEYS: a set of keys
     LAMP: a brightly shining brass lamp
 
+And looking around should work like this:
+
+    Inside building
+    > LOOK
+    You are inside a building, a well house for a large spring.
+    KEYS: a set of keys
+    WATER: a bottle of water
+
 To do this:
 
 - You must implement a new `Item` class that represents objects within the game (it should be obvious that it would not be advisable to name a class `Object`, hence the alternative that we propose here). Place it in its own file `item.py`.
@@ -442,7 +448,7 @@ To do this:
 
 - Then you need to make sure objects are loaded from the data file and place into the correct initial rooms after loading.
 
-- And finally, you can implement user interface code for items, in particular by modifying the `LOOK` command and implementing `TAKE` and `DROP` commands. But, note that you should always call methods on the `Adventure` class to do these actions! Do not directly manipulate elements (variables) from that class or from other classes.
+- And finally, you can implement user interface code for items, in particular by modifying the long description, the `LOOK` command, and implementing `TAKE` and `DROP` commands. But, note that you should always call methods on the `Adventure` class to do these actions! Do not directly manipulate elements (variables) from that class or from other classes.
 
 And to test, don't forget to load the Crowther map:
 
@@ -473,13 +479,15 @@ Have a good look at the constraints we **noted earlier**:
 
 - A hard constraint in this program is that the `Adventure` class may not `print` anything. And in return, the `__main__` part may, aside from printing things, only call methods in the `Adventure` class. It may not ever directly access methods and/or attributes from the `Room class`!
 
-- Remember that only a few things work with the Tiny map. You should normally test the game using the Crowther map. `check50` will certainly do so!
+- Remember that only a few things work with the Tiny map. You should normally test the game using the Crowther map.
 
 - If you need help testing "winning" the game, this [solution](win.txt) (spoiler alert!) may come in handy.
 
+<!--
 - Use our checks:
 
     check50 -l minprog/adventure/2022/more
+-->
 
 ## Zipping and submitting
 
