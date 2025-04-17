@@ -50,7 +50,7 @@ By making use of this particular behavior of `readline` we can parse the data fi
 
 Now implement the first phase of `load_room_graph` in `adventure.py`. You will store room information in a **dictionary** that maps a room number to a room object.
 
-> We use a dictionary because room numbers start at 1 and are not guaranteerd to be sequential. Also, we do not know in advance how many rooms are going to be needed. Hence, it may become too tricky to use a **list** for collecting rooms. So instead, we use a dictionary. Because we use integers as keys, it will almost *look* like we're using a list, but with a lot more flexibility.
+> We use a dictionary because room numbers start at 1 and are not guaranteed to be sequential. Also, we do not know in advance how many rooms are going to be needed. Hence, it may become too tricky to use a **list** for collecting rooms. So instead, we use a dictionary. Because we use integers as keys, it will almost *look* like we're using a list, but with a lot more flexibility.
 
 Start by opening the file and then write a loop to read the room data:
 
