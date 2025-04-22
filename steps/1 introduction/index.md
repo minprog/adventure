@@ -2,8 +2,6 @@
 
 In this project, your goal is to implement **Crowther's Adventure game** using OOP in Python. Eventually, your project will be implemented in a number of separate files that each contain some part of the code. Practicing with the design of programs using OOP is the main goal of this project. For most parts, we offer strong guidelines on how to implement your code; but for other parts, figuring out how to fit new functionality is your responsibility.
 
-> All parts of this final assignment are to be done individually. Feel free to discuss programming strategies and overall design with other students, but refrain from diving into specifics about how to write code for particular parts of the program.
-
 ## Background
 
 Back in the days, before computer graphics on personal computers (PCs) were a thing, text-based adventure games were incredibly popular. This type of game consists entirely out of text printed to the screen, and is traversed by typing in commands, much like those one would enter in the terminal to navigate the file system.
