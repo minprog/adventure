@@ -10,19 +10,23 @@ Here are the constraints that we noted earlier:
 
 Keep these in mind before submitting your final solution.
 
+## Punten
 
+Let op de punten die je kan krijgen deze week! Die staan vermeld in het overzicht.
+
+<!--
 ## check50
 
-	check50 -l minprog/adventure/2020/more
+    check50 -l minprog/adventure/2020/more
 
 
 ## style50
 
-	style50 adventure.py
-	style50 room.py
-	style50 loader.py
-	style50 item.py
-
+    style50 adventure.py
+    style50 room.py
+    style50 loader.py
+    style50 item.py
+ -->
 
 ## That's it!
 
