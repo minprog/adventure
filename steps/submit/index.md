@@ -14,6 +14,14 @@ Keep these in mind before submitting your final solution.
 
 Let op de punten die je kan krijgen deze week! Die staan vermeld in het overzicht.
 
+## Zipping and submitting
+
+To submit, you will need a zip-file containing just the Python files for your solution. These files may not be located in a subfolder inside the zip! So please follow the steps below.
+
+`cd` into the folder that contains `adventure.py` and then run this command to zip your solution:
+
+    zip adventure-submit.zip *.py
+
 <!--
 ## check50
 
