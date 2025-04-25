@@ -14,6 +14,12 @@ Keep these in mind before submitting your final solution.
 
 Let op de punten die je kan krijgen deze week! Die staan vermeld in het overzicht.
 
+## GEEN SELF
+
+Als je `Self` import dan moet je dit weghalen, omdat dit niet werkt op de nakijkserver.
+
+In plaats daarvan moet je `Self` vervangen door `'Room'` of een andere naam van een class tussen quotes.
+
 ## Zipping and submitting
 
 To submit, you will need a zip-file containing just the Python files for your solution. These files may not be located in a subfolder inside the zip! So please follow the steps below.
