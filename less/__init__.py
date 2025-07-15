@@ -29,7 +29,7 @@ room_5_name = "Slit in rock"
 room_5_description = ("At your feet all the water of the stream splashes into a two-inch slit in the rock."
                       "  To the south, the streambed is bare rock.")
 
-room_6_name = ["Outside grate"]
+room_6_name = "Outside grate"
 room_6_description = ["You are in a 25-foot depression floored with bare dirt. "
                       "Set into the dirt is a strong steel grate mounted in concrete.  "
                       "A dry streambed leads into the depression from the north."]
@@ -173,6 +173,27 @@ def forced_move():
     check.stdout("You find yourself at the edge of a impassible stream. You head back to the depression.",
                  regex=False)
     check.stdout("Outside grate", regex=False)
+
+
+@check50.check(forced_move)
+def back_forced():
+    """BACK ignores forced rooms"""
+    check = check50.run(RUN_SMALL)
+    moves = ["DOWN", "DOWN", "DOWN", "WEST"]
+
+    for move in moves:
+        check.stdout("> ")
+        check.stdin(move, prompt=False)
+
+    check.stdout(room_6_name, regex=False)
+    check.stdin("BACK")
+    check.stdout(room_6_name, regex=False)
+    check.stdin("BACK")
+    check.stdout(room_5_name, regex=False)
+    check.stdin("BACK")
+    check.stdout(room_4_name, regex=False)
+    check.stdin("BACK")
+    check.stdout(room_1_name, regex=False)
 
 
 @check50.check(forced_move)
