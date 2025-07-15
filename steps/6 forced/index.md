@@ -21,7 +21,7 @@ If a player enters a room that has a direction named `FORCED`:
 - the long room description will be printed (even if already visited);
 - the player will be immediately moved back to the connected room;
 - the description for the connected room will be printed (may be short or long, as usual).
-
+- Make sure that forced movement does not interact with the `BACK` command. E.g., when you go from room 1 to room 2, but are then forced into room 3, the `BACK` command should take you to room 1 again!
 
 ## Hint
 
