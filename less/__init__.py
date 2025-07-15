@@ -21,6 +21,14 @@ room_3_description = ("You are inside a building, a well house for a large "
                       "spring.")
 room_3_items = ["KEYS", "a set of keys"]
 
+room_4_name = "Valley beside a stream"
+room_4_description = ("You are in a valley in the forest beside a stream tumbling along a rocky bed."
+                      "  The stream is flowing to the south.")
+
+room_5_name = "Slit in rock"
+room_5_description = ("At your feet all the water of the stream splashes into a two-inch slit in the rock."
+                      "  To the south, the streambed is bare rock.")
+
 room_6_name = ["Outside grate"]
 room_6_description = ["You are in a 25-foot depression floored with bare dirt. "
                       "Set into the dirt is a strong steel grate mounted in concrete.  "
@@ -92,6 +100,17 @@ def move_mixed_case():
                                                regex=False)
     check50.run(RUN_TINY).stdin("west").stdin("EAST").stdout(room_1_name,
                                                              regex=False)
+
+@check50.check(move_repeatedly)
+def go_back():
+    """BACK moves the player back"""
+    check = check50.run(RUN_SMALL)
+    check.stdin("SOUTH").stdout(room_4_description, regex=False)
+    check.stdin("DOWN").stdout(room_5_description, regex=False)
+    check.stdin("BACK").stdout(room_4_name, regex=False)
+    check.stdin("BACK").stdout(room_1_name, regex=False)
+    check.stdin("BACK").stdout(room_1_name, regex=False)
+    check.stdin("BACK").stdout(room_1_name, regex=False)
 
 
 @check50.check(move_mixed_case)

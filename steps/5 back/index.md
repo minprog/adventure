@@ -18,8 +18,32 @@ Have `Adventure` hold an instance of `History`. Everytime a room is *left* for a
 
 ### Go `BACK`
 
-Now make the `BACK` command work. First, add a `method` to adventure for going back, `def back(self)` perhaps? Then add the `BACK` command to the main loop of your program. 
- 
+Now make the `BACK` command work. First, add a `method` to adventure for going back, `def back(self)` perhaps? Then add the `BACK` command to the main loop of your program. It should ultimately work like so:
+
+    $ python3 adventure.py Small
+    Welcome to Adventure.
+
+    You are standing at the end of a road before a small brick building.  A small stream flows out of the building and down a gully to the south.  A road runs up a small hill to the west.
+    > South
+    You are in a valley in the forest beside a stream tumbling along a rocky bed.  The stream is flowing to the south.
+    > Down
+    At your feet all the water of the stream splashes into a two-inch slit in the rock.  To the south, the streambed is bare rock.
+    > BACK
+    Valley beside a stream
+    > BACK
+    Outside building
+
+Note how the short description is printed after `BACK`. 
+
+Much like hitting `undo` until there is nothing left to undo, if you can't go back any further, just keep printing the current room's description:
+
+    > BACK
+    Outside building
+    > BACK
+    Outside building
+    > BACK
+    Outside building
+
 ## Testing
 
 Be sure to run `$ python adventure.py Small`, take a few steps, and see if you can retrace your steps with multiple by calling `BACK` multiple times.
