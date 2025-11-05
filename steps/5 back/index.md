@@ -1,4 +1,4 @@
-## Step 5: Implement BACK
+# Adventure: going BACK
 
 > Before continuing, make sure your program still works if you transition from the **Tiny** map to the **Small** map! From now on, when testing, run the game like this: `$ python adventure.py Small`. The **Small** map data file also contains items, no need to parse these just yet. You can ignore them for now.
 

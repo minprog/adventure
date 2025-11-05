@@ -1,7 +1,6 @@
-# Adventure: additional commands
+# Adventure: Utility commands
 
-`HELP` and `LOOK` are two commands to make the game a bit easier to use.
-
+`HELP`, `LOOK` and `INVENTORY` are commands to make the game a bit easier to use.
 
 ## What to do
 
