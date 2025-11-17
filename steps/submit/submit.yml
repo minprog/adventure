@@ -5,6 +5,7 @@ files:
         - room.py
         - loader.py
         - item.py
+        - history.py
     optional:
         - test_adventure.py
 check:
