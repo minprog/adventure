@@ -5,6 +5,8 @@ files:
         - room.py
         - loader.py
         - item.py
+    optional:
+        - test_adventure.py
 check:
     tool: check50
     slug: minprog/adventure/2022/more
