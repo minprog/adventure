@@ -8,6 +8,10 @@ files:
         - history.py
     optional:
         - test_adventure.py
+        - test_room.py
+        - test_loader.py
+        - test_item.py
+        - test_history.py
 check:
     tool: check50
     slug: minprog/adventure/2022/more
