@@ -2,6 +2,28 @@ import check50
 import sys
 import os
 
+def set_stdout_limit(char_limit: int):
+    from pexpect.exceptions import EOF
+    import check50._api
+
+    def _raw(s):
+        """Get raw representation of s, truncating if too long."""
+
+        if isinstance(s, list):
+            s = "\n".join(_raw(item) for item in s)
+
+        if s == EOF:
+            return "EOF"
+
+        s = f'"{repr(str(s))[1:-1]}"'
+        if len(s) > char_limit:
+            s = s[:char_limit] + "...\""  # Truncate if too long
+        return s
+
+    check50._api._raw = _raw
+    
+set_stdout_limit(10000)
+
 RUN_TINY = f"\"{sys.executable}\" adventure.py Tiny"
 RUN_SMALL = f"\"{sys.executable}\" adventure.py Small"
 
