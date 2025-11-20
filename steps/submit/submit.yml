@@ -14,4 +14,4 @@ files:
         - test_history.py
 check:
     tool: check50
-    slug: minprog/adventure/2022/more
+    slug: minprog/adventure/2025/more
