@@ -159,7 +159,7 @@ def multiple_conditional_move():
                  "WEST", "WEST", "TAKE BIRD", "WEST", "DOWN",
                  "SOUTH", "TAKE NUGGET", "OUT", "DROP NUGGET", "UP",
                  "EAST", "EAST", "EAST", "TAKE ROD", "WEST",
-                 "WEST", ""
+                 "WEST"
                  ]
 
         for move in moves:
