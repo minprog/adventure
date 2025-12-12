@@ -228,7 +228,12 @@ def won():
         check.stdout("> ")
         check.stdin(move, prompt=False)
 
-    check.stdout("You have collected all the treasures and are admitted to "
-                 "the Adventurer's Hall of Fame.  Congratulations!",
-                 help=f"These are all the moves to win Crowther Adventure: {', '.join(moves)}",
-                 regex=False)
+    try:
+        check.stdout("You have collected all the treasures and are admitted to "
+                    "the Adventurer's Hall of Fame.  Congratulations!",
+                    regex=False)
+    except check50.Failure as error:
+        raise check50.Failure(
+            error.payload["rationale"],
+            help=f"These are all the moves to win Crowther Adventure: {', '.join(moves)}"
+        )
