@@ -159,7 +159,7 @@ def multiple_conditional_move():
                  "WEST", "WEST", "TAKE BIRD", "WEST", "DOWN",
                  "SOUTH", "TAKE NUGGET", "OUT", "DROP NUGGET", "UP",
                  "EAST", "EAST", "EAST", "TAKE ROD", "WEST",
-                 "WEST", "LOOK"
+                 "WEST", ""
                  ]
 
         for move in moves:
@@ -230,4 +230,5 @@ def won():
 
     check.stdout("You have collected all the treasures and are admitted to "
                  "the Adventurer's Hall of Fame.  Congratulations!",
+                 help=f"These are all the moves to win Crowther Adventure: {', '.join(moves)}",
                  regex=False)
