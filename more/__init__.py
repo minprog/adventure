@@ -5,6 +5,7 @@ import sys
 less = check50.import_checks("../less")
 from less import *
 
+RUN_SMALL = f"\"{sys.executable}\" adventure.py Small"
 RUN_CROWTHER = f"\"{sys.executable}\" adventure.py Crowther"
 
 
@@ -14,6 +15,9 @@ room_3_description = ("You are inside a building, a well house for a large "
                       "a shimmering curtain.")
 room_3_items = ["KEYS", "a set of keys", "\n", "WATER", "a bottle of water"]
 
+
+room_3_small_description = ("You are inside a building, a well house for a large spring.")
+room_3_small_items = ["KEYS", "a set of keys"]
 
 @check50.check()
 def item_exists():
@@ -26,10 +30,10 @@ def find_items():
     """Finds items in rooms."""
     # Check initial description
     try:
-        check = check50.run(RUN_CROWTHER).stdin("in")
-        check.stdout(room_3_description, regex=False)
+        check = check50.run(RUN_SMALL).stdin("in")
+        check.stdout(room_3_small_description, regex=False)
 
-        for item in room_3_items:
+        for item in room_3_small_items:
             check.stdout(item, regex=False)
     except check50.Failure as error:
         raise check50.Failure(f"Could not find items upon first entering room.\n"
@@ -39,14 +43,14 @@ def find_items():
 
     # Check for look command
     try:
-        check = check50.run(RUN_CROWTHER)
-        moves = ["IN", "OUT", "IN", "LOOK"]
+        check = check50.run(RUN_SMALL)
+        moves = ["NORTH", "LOOK"]
 
         for move in moves:
             check.stdout("> ")
             check.stdin(move, prompt=False)
 
-        for item in room_3_items:
+        for item in room_3_small_items:
             check.stdout(item, regex=False)
     except check50.Failure as error:
         raise check50.Failure(f"Could not find items when using LOOK.\n"
@@ -57,7 +61,7 @@ def find_items():
 def handle_items():
     """Take and drop items."""
     # Take keys check
-    check = check50.run(RUN_CROWTHER)
+    check = check50.run(RUN_SMALL)
     moves = ["IN", "TAKE keys"]
 
     for move in moves:
@@ -67,7 +71,7 @@ def handle_items():
     check.stdout("KEYS taken", regex=False)
 
     # Drop keys check then look for dropped keys check
-    check = check50.run(RUN_CROWTHER)
+    check = check50.run(RUN_SMALL)
     moves = ["IN", "TAKE keys", "OUT", "DROP keys"]
 
     for move in moves:
@@ -82,11 +86,11 @@ def handle_items():
 def handle_invalid_items():
     """Take and drop nonexistent items."""
     # Take a non-existent item.
-    check = check50.run(RUN_CROWTHER).stdin("TAKE kes")
+    check = check50.run(RUN_SMALL).stdin("TAKE kes")
     check.stdout(no_item, regex=False)
 
     # Take an item twice.
-    check = check50.run(RUN_CROWTHER)
+    check = check50.run(RUN_SMALL)
     moves = ["IN", "TAKE keys", "TAKE keys"]
 
     for move in moves:
@@ -95,7 +99,7 @@ def handle_invalid_items():
     check.stdout(no_item, regex=False)
 
     # Drop non-existent item.
-    check = check50.run(RUN_CROWTHER).stdin("DROP something")
+    check = check50.run(RUN_SMALL).stdin("DROP something")
     check.stdout(no_item, regex=False)
 
 
@@ -104,14 +108,14 @@ def inventory():
     """Using the INVENTORY command."""
     # Check empty inventory.
     try:
-        check = check50.run(RUN_CROWTHER).stdin("INVENTORY")
+        check = check50.run(RUN_SMALL).stdin("INVENTORY")
         check.stdout("Your inventory is empty", regex=False)
     except check50.Failure as error:
         raise check50.Failure(f"Let the player know they have no items.\n"
                               f"    {error}")
 
     # Check having keys.
-    check = check50.run(RUN_CROWTHER)
+    check = check50.run(RUN_SMALL)
     moves = ["IN", "TAKE keys", "INVENTORY"]
 
     for move in moves:
