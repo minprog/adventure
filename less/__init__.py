@@ -200,10 +200,10 @@ def forced_move():
 @check50.check(forced_move)
 def back_forced():
     """BACK ignores forced rooms"""
-    check = check50.run(RUN_SMALL)
     moves = ["DOWN", "DOWN", "DOWN", "WEST"]
 
     try:
+        check = check50.run(RUN_SMALL)
         for move in moves:
             check.stdout("> ")
             check.stdin(move, prompt=False)
@@ -218,6 +218,7 @@ def back_forced():
         check.stdin("BACK")
         check.stdout(room_1_name, regex=False)
     except check50.Failure as error:
+        check = check50.run(RUN_SMALL)
         for move in moves:
             check.stdout("> ")
             check.stdin(move, prompt=False)
