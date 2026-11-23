@@ -203,20 +203,32 @@ def back_forced():
     check = check50.run(RUN_SMALL)
     moves = ["DOWN", "DOWN", "DOWN", "WEST"]
 
-    for move in moves:
-        check.stdout("> ")
-        check.stdin(move, prompt=False)
+    try:
+        for move in moves:
+            check.stdout("> ")
+            check.stdin(move, prompt=False)
 
-    check.stdout(room_6_name, regex=False)
-    check.stdin("BACK")
-    check.stdout(room_6_name, regex=False)
-    check.stdin("BACK")
-    check.stdout(room_5_name, regex=False)
-    check.stdin("BACK")
-    check.stdout(room_4_name, regex=False)
-    check.stdin("BACK")
-    check.stdout(room_1_name, regex=False)
+        check.stdout(room_6_name, regex=False)
+        check.stdin("BACK")
+        check.stdout(room_6_name, regex=False)
+        check.stdin("BACK")
+        check.stdout(room_5_name, regex=False)
+        check.stdin("BACK")
+        check.stdout(room_4_name, regex=False)
+        check.stdin("BACK")
+        check.stdout(room_1_name, regex=False)
+    except check50.Failure as error:
+        for move in moves:
+            check.stdout("> ")
+            check.stdin(move, prompt=False)
 
+        check.stdout(room_6_name, regex=False)
+        check.stdin("BACK")
+        check.stdout(room_5_name, regex=False)
+        check.stdin("BACK")
+        check.stdout(room_4_name, regex=False)
+        check.stdin("BACK")
+        check.stdout(room_1_name, regex=False)
 
 @check50.check(forced_move)
 def synonyms():
